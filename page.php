@@ -11,14 +11,14 @@
     <!--BTS ICON-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <!--ALERTIFY-->
-    
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<link rel="stylesheet" href="style.css">
     <title>Admin login</title>
 
 </head>
 
 <body style="background-color: #0DBA4B;">
-    <div class="container d-flex justify-content-center align-items-center min-vh-100  m-xl-auto my-xl-3">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100  m-xl-auto">
         <div class=" p-3 shadow box-area m-3 rounded-3" style="background-color: #f6f6f9;">
             <div class="row align-items-center ">
                 <div class="col-md-6 rounded-5 d-flex justify-content-center align-items-center flex-column left-box">
@@ -214,14 +214,14 @@
                     processData: false,
                     contentType: false,
                     success: function(response) {
-                        console.log(1);
+                        // console.log(1);
                         console.log(response);
                         var res = jQuery.parseJSON(response);
                         console.log(res.status);
                         if (res.status == 422) {
                             $('#errorMessage').removeClass('d-none');
                             $('#errorMessage').text(res.message);
-                            console.log(1.5);
+                            // console.log(1.5);
 
                         } else if (res.status == 200) {
                             console.log(2);
