@@ -44,7 +44,7 @@
                                 <input type="text" class="form-control form-control-lg rounded" placeholder="E-mail address" required>
                             </div>
                             <div class="mb-3">
-                                <input type="password" class="form-control form-control-lg " id="exampleInputPassword1" placeholder="Password" minlength="8" required>
+                                <input type="password" class="form-control form-control-lg " id="exampleInputPassword" placeholder="Password" minlength="8" required>
                             </div>
                             <div class="input-group mb-3 d-flex justify-content-between">
                                 <div class="form-check">
@@ -206,15 +206,16 @@
                     processData: false,
                     contentType: false,
                     success: function(response) {
-
+                        console.log(1);
                         var res = jQuery.parseJSON(response);
                         console.log(res.status);
                         if (res.status == 422) {
                             $('#errorMessage').removeClass('d-none');
                             $('#errorMessage').text(res.message);
+                            console.log(1.5);
 
                         } else if (res.status == 200) {
-
+                            console.log(2);
                             $('#errorMessage').addClass('d-none');
                             $('#reg')[0].reset(); //change here
 
@@ -223,6 +224,7 @@
 
 
                         } else if (res.status == 500) {
+                            console.log(3);
                             $('#errorMessage').addClass('d-none');
                             $('#reg')[0].reset(); //change here 
                             alertify.set('notifier', 'position', 'top-right');
