@@ -2,13 +2,19 @@
 <html lang="en">
 
 <head>
-    <!-- <script src="jquery-3.3.1.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.24/sweetalert2.all.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <!--BTS ICON-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <!--ALERTIFY-->
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <title>Admin login</title>
+
 </head>
 
 <body style="background-color: #0DBA4B;">
@@ -238,55 +244,55 @@
 
             });
 
-            $(document).on('submit', '#reg', function(e) {
-                e.preventDefault();
+            // $(document).on('submit', '#reg', function(e) {
+            //     e.preventDefault();
 
-                var formData = new FormData(this);
-                formData.append("save_reg", true);
+            //     var formData = new FormData(this);
+            //     formData.append("save_reg", true);
 
-                // formData.append("img", $("input[name='img']")[0].files[0]);
+            //     // formData.append("img", $("input[name='img']")[0].files[0]);
 
-                $.ajax({
-                    type: "POST",
-                    url: "reg.php",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(response) {
-                        var res = jQuery.parseJSON(response);
-                        if (res.status == 422) {
-                            $('#errorMessage').removeClass('d-none');
-                            $('#errorMessage').text(res.message);
+            //     $.ajax({
+            //         type: "POST",
+            //         url: "reg.php",
+            //         data: formData,
+            //         processData: false,
+            //         contentType: false,
+            //         success: function(response) {
+            //             var res = jQuery.parseJSON(response);
+            //             if (res.status == 422) {
+            //                 $('#errorMessage').removeClass('d-none');
+            //                 $('#errorMessage').text(res.message);
 
-                        } else if (res.status == 200) {
-                            $('#errorMessage').addClass('d-none');
-                            $('#reg')[0].reset();
+            //             } else if (res.status == 200) {
+            //                 $('#errorMessage').addClass('d-none');
+            //                 $('#reg')[0].reset();
 
-                            // Close the modal
-                            closeModal();
+            //                 // Close the modal
+            //                 closeModal();
 
-                            // Show Alertify success message
-                            alertify.set('notifier', 'position', 'top-right');
-                            alertify.success(res.message);
+            //                 // Show Alertify success message
+            //                 alertify.set('notifier', 'position', 'top-right');
+            //                 alertify.success(res.message);
 
-                            // Redirect to login page
-                            setTimeout(function() {
-                                window.location.href = 'login.html'; // Change this to your login page URL
-                            }, 2000); // Redirect after 2 seconds
-                        } else if (res.status == 500) {
-                            $('#errorMessage').addClass('d-none');
-                            $('#reg')[0].reset();
-                            alertify.set('notifier', 'position', 'top-right');
-                            alertify.success(res.message);
-                        }
-                    }
-                });
-            });
+            //                 // Redirect to login page
+            //                 setTimeout(function() {
+            //                     window.location.href = 'login.html'; // Change this to your login page URL
+            //                 }, 2000); // Redirect after 2 seconds
+            //             } else if (res.status == 500) {
+            //                 $('#errorMessage').addClass('d-none');
+            //                 $('#reg')[0].reset();
+            //                 alertify.set('notifier', 'position', 'top-right');
+            //                 alertify.success(res.message);
+            //             }
+            //         }
+            //     });
+            // });
 
-            function closeModal() {
-                console.log('closeModal function called'); // Add this line for debugging
-                $('#myModal').modal('hide');
-            }
+            // function closeModal() {
+            //     console.log('closeModal function called'); // Add this line for debugging
+            //     $('#myModal').modal('hide');
+            // }
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
