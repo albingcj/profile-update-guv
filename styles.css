@@ -4,6 +4,9 @@
     background: hsla(0, 14%, 85%, 0.9);
     backdrop-filter: blur(30px);
 } */
+body{
+    width: 100vw;
+}
 
 .x{
     height: 48px;
