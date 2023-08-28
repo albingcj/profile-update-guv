@@ -81,7 +81,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form id="reg">
+                                            <form id="reg" enctype="multipart/form-data">
                                                 <div id="errorMessage" class="alert alert-warning d-none"></div>
                                                 <div class=" row justify-content-center">
                                                     <!--------------------------- Box ----------------------------->
@@ -198,15 +198,18 @@
                 var formData = new FormData(this);
                 formData.append("save_reg", true);
 
+                formData.append("img", $("input[name='img']")[0].files[0]); //gpt
+
                 console.log(formData);
                 $.ajax({
                     type: "POST",
-                    url: "php/reg.php",
+                    url: "reg.php",
                     data: formData,
                     processData: false,
                     contentType: false,
                     success: function(response) {
                         console.log(1);
+                        console.log(response);
                         var res = jQuery.parseJSON(response);
                         console.log(res.status);
                         if (res.status == 422) {
@@ -234,6 +237,56 @@
                 });
 
             });
+
+            $(document).on('submit', '#reg', function(e) {
+                e.preventDefault();
+
+                var formData = new FormData(this);
+                formData.append("save_reg", true);
+
+                // formData.append("img", $("input[name='img']")[0].files[0]);
+
+                $.ajax({
+                    type: "POST",
+                    url: "reg.php",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        var res = jQuery.parseJSON(response);
+                        if (res.status == 422) {
+                            $('#errorMessage').removeClass('d-none');
+                            $('#errorMessage').text(res.message);
+
+                        } else if (res.status == 200) {
+                            $('#errorMessage').addClass('d-none');
+                            $('#reg')[0].reset();
+
+                            // Close the modal
+                            closeModal();
+
+                            // Show Alertify success message
+                            alertify.set('notifier', 'position', 'top-right');
+                            alertify.success(res.message);
+
+                            // Redirect to login page
+                            setTimeout(function() {
+                                window.location.href = 'login.html'; // Change this to your login page URL
+                            }, 2000); // Redirect after 2 seconds
+                        } else if (res.status == 500) {
+                            $('#errorMessage').addClass('d-none');
+                            $('#reg')[0].reset();
+                            alertify.set('notifier', 'position', 'top-right');
+                            alertify.success(res.message);
+                        }
+                    }
+                });
+            });
+
+            function closeModal() {
+                console.log('closeModal function called'); // Add this line for debugging
+                $('#myModal').modal('hide');
+            }
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>

@@ -1,5 +1,5 @@
 <?php
-include("config.php");
+include("php/config.php");
 
 if (isset($_POST['save_reg'])) {
     $name = mysqli_real_escape_string($db, $_POST['name']);
@@ -15,7 +15,7 @@ if (isset($_POST['save_reg'])) {
     $file_name = $_FILES['img']['name'];
     $file_tmp = $_FILES['img']['tmp_name'];
     $ext = pathinfo($file_name, PATHINFO_EXTENSION);
-    $file_name = $s . "." . $ext;
+    $file_name = $email . "." . $ext;
     $filePath = "images/profile/" . $file_name;
     //img end
 
@@ -33,7 +33,6 @@ if (isset($_POST['save_reg'])) {
     $check = mysqli_num_rows(mysqli_query($db, $emquery));
     if ($check == 0) { //check for existing user
         move_uploaded_file($file_tmp, "images/profile/" . $file_name);
-        mysqli_query($db, $query);
     } else {
         $res = [
             'status' => 500,
@@ -68,3 +67,4 @@ if (isset($_POST['save_reg'])) {
         return;
     }
 }
+?>
