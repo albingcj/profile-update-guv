@@ -1,0 +1,23 @@
+
+
+/* .cardss{
+    background: hsla(0, 14%, 85%, 0.9);
+    backdrop-filter: blur(30px);
+} */
+
+.x{
+    height: 48px;
+/* width: 105%; */
+}
+input[type="file"] {
+    /* height: 48px; */
+    line-height: 2.15;
+}
+.btn:hover #im {
+    animation: zoomInOut 1s infinite; /* Play animation on hover */
+}
+
+@keyframes zoomInOut {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
