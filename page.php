@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="img/favicon.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <!--BTS ICON-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <!--ALERTIFY-->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <link rel="stylesheet" href="style.css">
     <title>Admin login</title>
 
 </head>
@@ -45,12 +44,12 @@
                             <h2>Hello,Again😊</h2>
                             <p>Welcome back.</p>
                         </div>
-                        <form id="login">
+                        <form id="log">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control form-control-lg rounded" placeholder="E-mail address" required>
+                                <input type="text" class="form-control form-control-lg rounded" placeholder="E-mail address" required name="email">
                             </div>
                             <div class="mb-3">
-                                <input type="password" class="form-control form-control-lg " id="exampleInputPassword" placeholder="Password" minlength="8" required>
+                                <input type="password" class="form-control form-control-lg " name="upwd" id="exampleInputPassword" placeholder="Password" minlength="8" required>
                             </div>
                             <div class="input-group mb-3 d-flex justify-content-between">
                                 <div class="form-check">
@@ -81,90 +80,95 @@
                             <small>Don't have account? <a href="#" data-bs-toggle="modal" data-bs-target="#myModal">Register</a></small>
                             <!-- Modal -->
                             <div class="modal fade " id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg ">
+                                <div class="modal-dialog modal-lg modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form id="reg" enctype="multipart/form-data">
-                                                <div id="errorMessage" class="alert alert-warning d-none"></div>
+                                            <form id="reg">
                                                 <div class=" row justify-content-center">
                                                     <!--------------------------- Box ----------------------------->
+                                                    <div class="row">
+                                                        <div id="errorMessage" class="alert alert-warning d-none"></div>
+
+                                                    </div>
                                                     <div class="row">
                                                         <div class="header-text mb-4 text-center">
                                                             <img src="https://www.guvi.com/build/images/guvi-logo.e8ad68fbd8dc0a5fc2f7c4ffd580c54d.png" alt="" class="img-fluid">
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm">
+                                                    <div class="row">
+                                                        <div class="col-sm">
 
-                                                        <div class="col align-items-center">
+                                                            <div class="col align-items-center">
 
-                                                            <div class=" mb-3">
-                                                                <input type="text" class="form-control form-control-lg " placeholder="Enter your name" name="name">
+                                                                <div class=" mb-3">
+                                                                    <input type="text" class="form-control form-control-lg " placeholder="Enter your name" name="name">
+                                                                </div>
+
+                                                                <div class="mb-3">
+                                                                    <input type="mail" class="form-control form-control-lg " placeholder="Email address" name="email">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <input type="password" class="form-control form-control-lg " id="exampleInputPassword1" placeholder="Password (minimum 8)" minlength="8" name="pass1">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <input type="password" class="form-control form-control-lg " id="exampleInputPassword2" placeholder="Enter password again" minlength="8" name="pass2">
+                                                                </div>
+
+
                                                             </div>
-
-                                                            <div class="mb-3">
-                                                                <input type="mail" class="form-control form-control-lg " placeholder="Email address" name="email">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <input type="password" class="form-control form-control-lg " id="exampleInputPassword1" placeholder="Password (minimum 8)" minlength="8" name="pass1">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <input type="password" class="form-control form-control-lg " id="exampleInputPassword2" placeholder="Enter password again" minlength="8" name="pass2">
-                                                            </div>
-
-
                                                         </div>
-                                                    </div>
 
-                                                    <div class="col-sm ">
-                                                        <div class="col align-items-center">
-                                                            <div class="input-group">
+                                                        <div class="col-sm ">
+                                                            <div class="col align-items-center">
+                                                                <div class="input-group">
 
-                                                                <div class="col mb-3 me-2">
-                                                                    <select class="x form-select form-control-lg" aria-label="Default select example" name="gen">
-                                                                        <option selected disabled>Gender</option>
-                                                                        <option value="1">Male</option>
-                                                                        <option value="2">Female</option>
-                                                                        <option value="3">Others</option>
-                                                                    </select>
+                                                                    <div class="col mb-3 me-2">
+                                                                        <select class="x form-select form-control-lg" aria-label="Default select example" name="gen">
+                                                                            <!-- <option  disabled>Gender</option> -->
+                                                                            <option selected value="1">Male</option>
+                                                                            <option value="2">Female</option>
+                                                                            <option value="3">Others</option>
+                                                                        </select>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend me-2">
+                                                                        <select class="x form-select" aria-label="Select country code" name="code">
+                                                                            <!-- <option selected disabled>+</option> -->
+                                                                            <option value="1">+01</option>
+                                                                            <option value="7">+07</option>
+                                                                            <option value="33">+33</option>
+                                                                            <option value="44">+44</option>
+                                                                            <option value="49">+49</option>
+                                                                            <option value="81">+81</option>
+                                                                            <option value="86">+86</option>
+                                                                            <option selected value="91">+91</option>
+                                                                            <option value="92">+92</option>
+                                                                            <option value="93">+93</option>
+                                                                            <option value="94">+94</option>
+                                                                            <option value="95">+95</option>
+                                                                            <option value="98">+98</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Mobile number" aria-label="Mobile number" aria-describedby="basic-addon1" inputmode="numeric" name="num">
+
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <input class="x form-control" type="date" id="formdate" name="dob">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <!-- <label for="formFile" class="form-label">Upload image</label> -->
+                                                                    <input class="x form-control" type="file" id="formFile" name="img">
                                                                 </div>
 
                                                             </div>
 
-                                                            <div class="input-group mb-3">
-                                                                <div class="input-group-prepend me-2">
-                                                                    <select class="x form-select" aria-label="Select country code" name="code">
-                                                                        <option selected disabled>+</option>
-                                                                        <option value="1">+01</option>
-                                                                        <option value="7">+07</option>
-                                                                        <option value="33">+33</option>
-                                                                        <option value="44">+44</option>
-                                                                        <option value="49">+49</option>
-                                                                        <option value="81">+81</option>
-                                                                        <option value="86">+86</option>
-                                                                        <option value="91">+91</option>
-                                                                        <option value="92">+92</option>
-                                                                        <option value="93">+93</option>
-                                                                        <option value="94">+94</option>
-                                                                        <option value="95">+95</option>
-                                                                        <option value="98">+98</option>
-                                                                    </select>
-                                                                </div>
-                                                                <input type="text" class="form-control" placeholder="Mobile number" aria-label="Mobile number" aria-describedby="basic-addon1" inputmode="numeric" name="num">
-
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <input class="x form-control" type="date" id="formdate" name="dob">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <!-- <label for="formFile" class="form-label">Upload image</label> -->
-                                                                <input class="x form-control" type="file" id="formFile" name="img">
-                                                            </div>
-
                                                         </div>
-
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
@@ -209,7 +213,7 @@
                 console.log(formData);
                 $.ajax({
                     type: "POST",
-                    url: "reg.php",
+                    url: "php/reg.php",
                     data: formData,
                     processData: false,
                     contentType: false,
@@ -244,6 +248,52 @@
 
             });
 
+
+            $(document).on('submit', '#reg', function(e) {
+                e.preventDefault();
+
+                var formData = new FormData(this);
+                formData.append("save_reg", true);
+
+                formData.append("img", $("input[name='img']")[0].files[0]); //gpt
+
+                console.log(formData);
+                $.ajax({
+                    type: "POST",
+                    url: "php/reg.php",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        // console.log(1);
+                        console.log(response);
+                        var res = jQuery.parseJSON(response);
+                        console.log(res.status);
+                        if (res.status == 422) {
+                            $('#errorMessage').removeClass('d-none');
+                            $('#errorMessage').text(res.message);
+                            // console.log(1.5);
+
+                        } else if (res.status == 200) {
+                            console.log(2);
+                            $('#errorMessage').addClass('d-none');
+                            $('#reg')[0].reset(); //change here
+
+                            alertify.set('notifier', 'position', 'top-right');
+                            alertify.success(res.message);
+
+
+                        } else if (res.status == 500) {
+                            console.log(3);
+                            $('#errorMessage').addClass('d-none');
+                            $('#reg')[0].reset(); //change here 
+                            alertify.set('notifier', 'position', 'top-right');
+                            alertify.success(res.message);
+                        }
+                    }
+                });
+
+            });
             // $(document).on('submit', '#reg', function(e) {
             //     e.preventDefault();
 

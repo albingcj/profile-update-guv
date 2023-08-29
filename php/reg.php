@@ -1,5 +1,5 @@
 <?php
-include("php/config.php");
+include("config.php");
 
 if (isset($_POST['save_reg'])) {
     $name = mysqli_real_escape_string($db, $_POST['name']);
@@ -19,7 +19,7 @@ if (isset($_POST['save_reg'])) {
     $filePath = "images/profile/" . $file_name;
     //img end
 
-    if ($name == NULL) {
+    if ($name == NULL or $email == NULL) {
         $res = [
             'status' => 422,
             'message' => 'All fields are mandatory'
@@ -68,3 +68,4 @@ if (isset($_POST['save_reg'])) {
     }
 }
 ?>
+
