@@ -10,6 +10,8 @@ $name  = $val['name'];
 $num  = $val['num'];
 $dob  = $val['dob'];
 $pic = $val['pic'];
+// echo "<script>alert('$pic');</script>";
+
 }
 else {
     echo "<script>alert('error in email');</script>";

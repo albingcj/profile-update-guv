@@ -188,7 +188,7 @@ include "php/value.php";
                 <div class="row bg-light justify-content-center">
                     <div class="col-5 d-flex justify-content-center">
                         <div class="img">
-                            <img src="<?= $img ?>" class="img-fluid rounded-circle p-3"
+                            <img src="<?= $pic ?>" class="img-fluid rounded-circle p-3"
                                 alt="profile picture" id="select-profile-picture" />
                         </div>
                     </div>

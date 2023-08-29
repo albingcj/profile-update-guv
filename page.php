@@ -70,7 +70,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form id="reg">
+                                            <form id="reg" enctype="multipart/form-data">
                                                 <div class=" row justify-content-center">
                                                     <!--------------------------- Box ----------------------------->
                                                     <div class="row">
@@ -147,7 +147,7 @@
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <!-- <label for="formFile" class="form-label">Upload image</label> -->
-                                                                    <input class="x form-control" type="file" id="formFile" name="pic">
+                                                                    <input type="file" name="pic" accept="image/*" required class="form-control" id="exampleFormControlInputx" placeholder="ppic">
                                                                 </div>
 
                                                             </div>
@@ -192,12 +192,12 @@
                 var formData = new FormData(this);
                 formData.append("save_reg", true);
 
-                // formData.append("img", $("input[name='img']")[0].files[0]); //gpt
+                formData.append("pic", $("#exampleFormControlInputx")[0].files[0]); //gpt
 
                 console.log(formData);
                 $.ajax({
                     type: "POST",
-                    url: "php/reg.php",
+                    url: "reg.php",
                     data: formData,
                     processData: false,
                     contentType: false,
@@ -262,7 +262,7 @@
 
                             alertify.set('notifier', 'position', 'top-right');
                             alertify.success(res.message);
-                            window.location.href="./profile.php"
+                            window.location.href="profile.php"
 
 
                         } else if (res.status == 500) {
