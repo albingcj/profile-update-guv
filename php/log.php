@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         return;
     }
     
-    $query = "SELECT * FROM reg where email='$myemail' AND pwrd='$mypassword'";
+    $emquery = "SELECT * FROM reg where email='$myemail' AND pwrd='$mypassword'";
     
     $check = mysqli_num_rows(mysqli_query($db, $emquery));
     if ($check == 0) { //check if existing user

@@ -208,7 +208,7 @@
                 var formData = new FormData(this);
                 formData.append("save_reg", true);
 
-                formData.append("img", $("input[name='img']")[0].files[0]); //gpt
+                // formData.append("img", $("input[name='img']")[0].files[0]); //gpt
 
                 console.log(formData);
                 $.ajax({
@@ -249,18 +249,15 @@
             });
 
 
-            $(document).on('submit', '#reg', function(e) {
+            $(document).on('submit', '#log', function(e) {
                 e.preventDefault();
 
                 var formData = new FormData(this);
-                formData.append("save_reg", true);
-
-                formData.append("img", $("input[name='img']")[0].files[0]); //gpt
-
+                formData.append("save_log", true);
                 console.log(formData);
                 $.ajax({
                     type: "POST",
-                    url: "php/reg.php",
+                    url: "php/log.php",
                     data: formData,
                     processData: false,
                     contentType: false,
@@ -281,6 +278,7 @@
 
                             alertify.set('notifier', 'position', 'top-right');
                             alertify.success(res.message);
+                            window.location.href="./profile.php"
 
 
                         } else if (res.status == 500) {
