@@ -1,6 +1,6 @@
 <?php
 include("config.php");
-
+session_start();
 if (isset($_POST['save_reg'])) {
     $name = mysqli_real_escape_string($db, $_POST['name']);
     $email = mysqli_real_escape_string($db, $_POST['email']);
@@ -10,14 +10,14 @@ if (isset($_POST['save_reg'])) {
     $code = mysqli_real_escape_string($db, $_POST['code']);
     $num = mysqli_real_escape_string($db, $_POST['num']);
     $date = mysqli_real_escape_string($db, $_POST['dob']);
-    $pic = mysqli_real_escape_string($db, $_POST['img']);
-    //img start
-    $file_name = $_FILES['img']['name'];
-    $file_tmp = $_FILES['img']['tmp_name'];
+    $pic = mysqli_real_escape_string($db, $_POST['pic']);
+    //pic start
+    $file_name = $_FILES['pic']['name'];
+    $file_tmp = $_FILES['pic']['tmp_name'];
     $ext = pathinfo($file_name, PATHINFO_EXTENSION);
-    $file_name = $email . "." . $ext;
+    $file_name = $num . "." . $ext;
     $filePath = "images/profile/" . $file_name;
-    //img end
+    //pic end
 
     if ($name == NULL or $email == NULL) {
         $res = [
@@ -44,7 +44,7 @@ if (isset($_POST['save_reg'])) {
 
 
     $query = "INSERT INTO reg (name, email, pwrd, gender, code, num, dob, pic) 
-          VALUES ('$name', '$email', '$pass1', '$gender', '$code', '$num', '$date', '$pic')";
+          VALUES ('$name', '$email', '$pass1', '$gender', '$code', '$num', '$date', '$filepath')";
     $query_run = mysqli_query($db, $query);
 
 

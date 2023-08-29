@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<?php 
+session_start();
 
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
-    <!-- Include Bootstrap Icons CSS -->
-</head>
+include "php/head.php";
+include "php/value.php";
+?>
+
 
 <body>
     <!-- Modal -->
@@ -196,14 +188,14 @@
                 <div class="row bg-light justify-content-center">
                     <div class="col-5 d-flex justify-content-center">
                         <div class="img">
-                            <img src="https://placehold.co/200" class="img-fluid rounded-circle p-3"
+                            <img src="<?= $img ?>" class="img-fluid rounded-circle p-3"
                                 alt="profile picture" id="select-profile-picture" />
                         </div>
                     </div>
                     <div class="col-auto d-flex flex-column justify-content-center g-2">
                         <div class="row mb-2">
                             <div class="d-flex">
-                                <h2>Albin George C J</h2>
+                                <h2><?= $name ?></h2>
 
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><button
                                         class="btn btn-link input-group-text" type="button">
@@ -214,8 +206,9 @@
                         </div>
                         <div class="row">
                             <div class="fs-6">
-                                albingcj@gmail.com
+                            <?= $email ?>
                             </div>
+                            <div><a name="logout" id="logout" class="btn btn-danger" href="php/logout.php" role="button">Logout</a></div>
                         </div>
                     </div>
                 </div>

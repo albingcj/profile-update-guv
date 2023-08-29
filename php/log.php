@@ -1,5 +1,6 @@
 <?php
 include("config.php");
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // username and password sent from form 
     $myemail = mysqli_real_escape_string($db, $_POST['email']);
@@ -15,17 +16,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     $emquery = "SELECT * FROM reg where email='$myemail' AND pwrd='$mypassword'";
-    
     $check = mysqli_num_rows(mysqli_query($db, $emquery));
+
     if ($check == 0) { //check if existing user
         $res = [
             'status' => 500,
             'message' => 'Check your email or password'
         ];
         echo json_encode($res);
+        session_destroy();
         return;
     }
     else{
+
+        $_SESSION['log'] = $myemail;
         $res = [
             'status' => 200,
             'message' => 'Logged in Successfully'
