@@ -1,5 +1,4 @@
-
-<?php 
+<?php
 session_start();
 
 include "php/head.php";
@@ -31,24 +30,17 @@ include "php/value.php";
                                     <div class="col align-items-center">
 
                                         <div class=" mb-3">
-                                            <input type="text" class="form-control form-control-lg "
-                                                placeholder="Edit your name" name="name">
+                                            <input type="text" class="form-control form-control-lg " placeholder="Edit your name" name="name">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="password" class="form-control form-control-lg "
-                                                id="exampleInputPassword1" placeholder="Enter your current password"
-                                                minlength="8" name="pass2">
+                                            <input type="password" class="form-control form-control-lg " id="exampleInputPassword1" placeholder="Enter your current password" minlength="8" name="pass2">
                                         </div>
 
                                         <div class="mb-3">
-                                            <input type="password" class="form-control form-control-lg "
-                                                id="exampleInputPassword2" placeholder="New password (minimum 8)"
-                                                minlength="8" name="pass1">
+                                            <input type="password" class="form-control form-control-lg " id="exampleInputPassword2" placeholder="New password (minimum 8)" minlength="8" name="pass1">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="password" class="form-control form-control-lg "
-                                                id="exampleInputPassword3" placeholder="Enter new password again"
-                                                minlength="8" name="pass2">
+                                            <input type="password" class="form-control form-control-lg " id="exampleInputPassword3" placeholder="Enter new password again" minlength="8" name="pass2">
                                         </div>
                                     </div>
                                 </div>
@@ -58,8 +50,7 @@ include "php/value.php";
                                         <div class="input-group">
 
                                             <div class="col-12 mb-3 me-2">
-                                                <select class="x form-select form-control-lg"
-                                                    aria-label="Default select example" name="gen">
+                                                <select class="x form-select form-control-lg" aria-label="Default select example" name="gen">
                                                     <option selected disabled>Gender</option>
                                                     <option value="1">Male</option>
                                                     <option value="2">Female</option>
@@ -71,8 +62,7 @@ include "php/value.php";
 
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend me-2">
-                                                <select class="x form-select" aria-label="Select country code"
-                                                    name="code">
+                                                <select class="x form-select" aria-label="Select country code" name="code">
                                                     <option selected disabled>+</option>
                                                     <option value="1">+01</option>
                                                     <option value="7">+07</option>
@@ -89,9 +79,7 @@ include "php/value.php";
                                                     <option value="98">+98</option>
                                                 </select>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Mobile number"
-                                                aria-label="Mobile number" aria-describedby="basic-addon1"
-                                                inputmode="numeric" name="num">
+                                            <input type="text" class="form-control" placeholder="Mobile number" aria-label="Mobile number" aria-describedby="basic-addon1" inputmode="numeric" name="num">
 
                                         </div>
                                         <div class="mb-3">
@@ -109,8 +97,7 @@ include "php/value.php";
                             <div class="row">
                                 <div class="col">
                                     <div class="input-group mb-2">
-                                        <button class="btn btn-lg btn-primary btn-outline-light border-0 w-100 fs-6"
-                                            type="submit">Update</button>
+                                        <button class="btn btn-lg btn-primary btn-outline-light border-0 w-100 fs-6" type="submit">Update</button>
                                         <!-- style="background-color: #0DBA4B;" -->
                                     </div>
 
@@ -188,26 +175,28 @@ include "php/value.php";
                 <div class="row bg-light justify-content-center">
                     <div class="col-5 d-flex justify-content-center">
                         <div class="img">
-                            <img src="<?= $pic ?>" class="img-fluid rounded-circle p-3"
-                                alt="profile picture" id="select-profile-picture" />
+                            <img src="<?= $pic ?>" class="img-fluid rounded-circle p-3" alt="profile picture" id="select-profile-picture" />
                         </div>
                     </div>
                     <div class="col-auto d-flex flex-column justify-content-center g-2">
-                        <div class="row mb-2">
-                            <div class="d-flex">
-                                <h2><?= $name ?></h2>
+                        <div class="col-auto mb-2">
+                            <div class="row mb-2">
+                                <div class="d-flex">
+                                    <h2><?= $name ?></h2>
 
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><button
-                                        class="btn btn-link input-group-text" type="button">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><button class="btn btn-link input-group-text" type="button">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button></a>
 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="fs-6">
+                                    <?= $email ?>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="fs-6">
-                            <?= $email ?>
-                            </div>
+                        <div class="col-auto">
                             <div><a name="logout" id="logout" class="btn btn-danger" href="php/logout.php" role="button">Logout</a></div>
                         </div>
                     </div>
@@ -253,8 +242,30 @@ include "php/value.php";
                                     </a>
                                 </div>
                             </div>
-                            <hr/>
+                            <hr />
                             <div class="summary p-2">Add your Experience</div>
+                        </div>
+                    </div>
+                    <div class="col-12 p-3">
+                        <div class="card m-2">
+                            <div class="card-head d-flex justify-content-between">
+                                <div class="p-2 fs-5">Personal Details</div>
+                                <div class="p-2 pe-3">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><button class="btn btn-link input-group-text" type="button">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button></a>
+
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="summary p-2">
+                                <div class="card-body">
+                                    <p class="card-text"><strong>Name:</strong> <?php echo $name; ?></p>
+                                    <p class="card-text"><strong>Mobile Number:</strong> <?php echo $num; ?></p>
+                                    <p class="card-text"><strong>Date of Birth:</strong> <?php echo $dob; ?></p>
+                                    <p class="card-text"><strong>Age:</strong> <?php echo $age; ?></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -266,13 +277,9 @@ include "php/value.php";
         <!-- place footer here -->
     </footer>
     <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.15.0/font/bootstrap-icons.css"></script>
 </body>

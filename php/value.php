@@ -10,6 +10,20 @@ $name  = $val['name'];
 $num  = $val['num'];
 $dob  = $val['dob'];
 $pic = $val['pic'];
+
+
+// Create a DateTime object from the date of birth
+$birthDate = new DateTime($dob);
+// Get the current date
+$currentDate = new DateTime();
+// Calculate the difference between the current date and the date of birth
+$interval = $birthDate->diff($currentDate);
+// Get the years from the interval
+$age = $interval->y;
+
+
+
+
 // echo "<script>alert('$pic');</script>";
 
 }
