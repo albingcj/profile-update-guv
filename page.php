@@ -25,10 +25,10 @@
 
                 <div class="col-md-6 right-box">
                     <div class="row align-items-center justify-content-center">
-                        <div id="errorMessage1" class="alert alert-warning d-none"></div>
                         <div class="header-text mt-2">
                             <h2>Hello,Again😊</h2>
                             <p>Welcome back.</p>
+                            <div id="errorMessage1" class="alert alert-warning d-none"></div>
                         </div>
                         <form id="log">
                             <div class="input-group mb-3">
