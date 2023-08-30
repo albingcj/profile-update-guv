@@ -1,8 +1,9 @@
 <?php
-session_start();
+// session_start();
 
-include "php/head.php";
-include "php/value.php";
+include "head.php";
+include "value.php";
+
 ?>
 
 
@@ -15,11 +16,11 @@ include "php/value.php";
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="reg" enctype="multipart/form-data">
+                    <form id="upd" enctype="multipart/form-data">
                         <div id="errorMessage" class="alert alert-warning d-none"></div>
                         <div class=" row justify-content-center">
                             <!--------------------------- Box ----------------------------->
-                            <div class="row justify-content-evenly p-3">
+                            <div class="row justify-content-evenly p-4">
                                 <div class="col-auto">
                                     <h5>Edit Your Profile</h5>
                                 </div>
@@ -33,14 +34,14 @@ include "php/value.php";
                                             <input type="text" class="form-control form-control-lg " placeholder="Edit your name" name="name">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="password" class="form-control form-control-lg " id="exampleInputPassword1" placeholder="Enter your current password" minlength="8" name="pass2">
+                                            <input type="password" class="form-control form-control-lg " id="exampleInputPassword1" placeholder="Enter your current password" minlength="8" name="pass1">
                                         </div>
 
                                         <div class="mb-3">
-                                            <input type="password" class="form-control form-control-lg " id="exampleInputPassword2" placeholder="New password (minimum 8)" minlength="8" name="pass1">
+                                            <input type="password" class="form-control form-control-lg " id="exampleInputPassword2" placeholder="New password (minimum 8)" minlength="8" name="pass2">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="password" class="form-control form-control-lg " id="exampleInputPassword3" placeholder="Enter new password again" minlength="8" name="pass2">
+                                            <input type="password" class="form-control form-control-lg " id="exampleInputPassword3" placeholder="Enter new password again" minlength="8" name="pass3">
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +88,7 @@ include "php/value.php";
                                         </div>
                                         <div class="mb-3">
                                             <!-- <label for="formFile" class="form-label">Upload image</label> -->
-                                            <input class="x form-control" type="file" id="formFile" name="img">
+                                            <input class="x form-control" type="file" id="formFile" name="pic">
                                         </div>
 
                                     </div>
@@ -112,19 +113,21 @@ include "php/value.php";
     <div class="modal fade" id="sumModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Edit Profile</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- Add your form fields for editing here -->
-                    <input type="text" class="form-control" placeholder="Edit your name">
-                    <!-- Add more fields as needed -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                <form id="summod">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Edit Profile</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Add your form fields for editing here -->
+                        <input type="text" class="form-control" placeholder="<?= $summary?>" name="sumin" >
+                        <!-- Add more fields as needed -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -170,16 +173,16 @@ include "php/value.php";
         <!-- place navbar here -->
     </header>
     <main>
-        <div class="container-fluid bg-dark">
+        <div class="container-fluid bg-dark" id="cont">
             <div class="col bg-secondary">
                 <div class="row bg-light justify-content-center">
-                    <div class="col-5 d-flex justify-content-center">
+                    <div class="col-12 col-sm-5 d-flex justify-content-center">
                         <div class="img">
-                            <img src="<?= $pic ?>" class="img-fluid rounded-circle p-3" alt="profile picture" id="select-profile-picture" />
+                            <img src="<?= $pic ?>" class=" rounded-circle p-4" alt="profile picture" id="select-profile-picture" style="width:180px; height:180px;object-fit:cover" />
                         </div>
                     </div>
                     <div class="col-auto d-flex flex-column justify-content-center g-2">
-                        <div class="col-auto mb-2">
+                        <div class="col-12 col-sm-7 mb-2">
                             <div class="row mb-2">
                                 <div class="d-flex">
                                     <h2><?= $name ?></h2>
@@ -197,13 +200,13 @@ include "php/value.php";
                             </div>
                         </div>
                         <div class="col-auto">
-                            <div><a name="logout" id="logout" class="btn btn-danger" href="php/logout.php" role="button">Logout</a></div>
+                            <div><a name="logout" id="logout" class="btn btn-danger" href="logout.php" role="button">Logout</a></div>
                         </div>
                     </div>
                 </div>
                 <div class="row pt-4 bg-light">
-                    <div class="col-12 p-3">
-                        <div class="card m-2" style="height: 10rem;">
+                    <div class="col-12 p-4">
+                        <div class="card m-3">
                             <div class="card-head d-flex justify-content-between">
                                 <div class="p-2 fs-5">Summary</div>
                                 <div class="p-2 pe-3">
@@ -214,11 +217,11 @@ include "php/value.php";
                                 </div>
                             </div>
                             <hr />
-                            <div class="summary p-2">Edit Summary</div>
+                            <div class="summary p-2" id="summary"><?= $sum ?></div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-6 p-3">
-                        <div class="card m-2" style="height: 10rem;">
+                    <div class="col-12 col-lg-6 p-4">
+                        <div class="card m-3">
                             <div class="card-head d-flex justify-content-between">
                                 <div class="p-2 fs-5">Education</div>
                                 <div class="p-2 pe-3">
@@ -232,8 +235,8 @@ include "php/value.php";
                             <div class="summary p-2">Add Education</div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-6 p-3">
-                        <div class="card m-2" style="height: 10rem;">
+                    <div class="col-12 col-lg-6 p-4">
+                        <div class="card m-3">
                             <div class="card-head d-flex justify-content-between">
                                 <div class="p-2 fs-5">Experience</div>
                                 <div class="p-2 pe-3">
@@ -246,8 +249,8 @@ include "php/value.php";
                             <div class="summary p-2">Add your Experience</div>
                         </div>
                     </div>
-                    <div class="col-12 p-3">
-                        <div class="card m-2">
+                    <div class="col-12 p-4">
+                        <div class="card m-3">
                             <div class="card-head d-flex justify-content-between">
                                 <div class="p-2 fs-5">Personal Details</div>
                                 <div class="p-2 pe-3">
@@ -276,6 +279,102 @@ include "php/value.php";
     <footer>
         <!-- place footer here -->
     </footer>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).on('submit', '#upd', function(e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+            formData.append("save_up", true);
+
+            formData.append("pic", $("#formFile")[0].files[0]); // Use correct ID
+
+            $.ajax({
+                type: "POST",
+                url: "upd.php",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    console.log(response);
+                    var res = jQuery.parseJSON(response);
+                    console.log(res.status);
+                    if (res.status == 422) {
+                        $('#errorMessage').removeClass('d-none');
+                        $('#errorMessage').text(res.message);
+                        // console.log(1.5);
+
+                    } else if (res.status == 200) {
+                        console.log(2);
+                        $('#errorMessage').addClass('d-none');
+                        $('#upd')[0].reset(); //change here
+                        $('#cont').load(window.location.href + ' #cont');
+                        alertify.set('notifier', 'position', 'top-right');
+                        alertify.success(res.message);
+
+
+                    } else if (res.status == 500) {
+                        console.log(3);
+                        $('#errorMessage').addClass('d-none');
+                        $('#upd')[0].reset(); //change here 
+                        $('#cont').load(window.location.href + ' #cont');
+                        alertify.set('notifier', 'position', 'top-right');
+                        alertify.success(res.message);
+                    }
+                }
+            });
+        });
+
+
+
+        $(document).on('submit', '#summod', function(e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+            formData.append("save_sum", true);
+
+            formData.append("pic", $("#formFile")[0].files[0]); // Use correct ID
+
+            $.ajax({
+                type: "POST",
+                url: "upd.php",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    console.log(response);
+                    var res = jQuery.parseJSON(response);
+                    console.log(res.status);
+                    if (res.status == 422) {
+                        $('#errorMessage').removeClass('d-none');
+                        $('#errorMessage').text(res.message);
+                        // console.log(1.5);
+
+                    } else if (res.status == 200) {
+                        console.log(2);
+                        $('#errorMessage').addClass('d-none');
+                        $('#summod')[0].reset(); //change here
+                        $('#summary').load(window.location.href + ' #summary');
+                        alertify.set('notifier', 'position', 'top-right');
+                        alertify.success(res.message);
+
+
+                    } else if (res.status == 500) {
+                        console.log(3);
+                        $('#errorMessage').addClass('d-none');
+                        $('#summod')[0].reset(); //change here 
+                        $('#summary').load(window.location.href + ' #summary');
+                        alertify.set('notifier', 'position', 'top-right');
+                        alertify.success(res.message);
+                    }
+                }
+            });
+        });
+    </script>
+
+
+
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 

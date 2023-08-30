@@ -1,4 +1,4 @@
-<?php include "php/head.php" ?>
+<?php include "head.php" ?>
 
 <body style="background-color: #0DBA4B;">
     <div class="container d-flex justify-content-center align-items-center min-vh-100  m-xl-auto">
@@ -241,7 +241,7 @@
                 console.log(formData);
                 $.ajax({
                     type: "POST",
-                    url: "php/log.php",
+                    url: "log.php",
                     data: formData,
                     processData: false,
                     contentType: false,

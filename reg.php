@@ -1,5 +1,5 @@
 <?php
-include("php/config.php");
+include("config.php");
 session_start();
 if (isset($_POST['save_reg'])) {
     $name = mysqli_real_escape_string($db, $_POST['name']);

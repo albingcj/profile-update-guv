@@ -1,14 +1,23 @@
 <?php
+// session_start();
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 include("config.php");
+// include_once "session.php";
 
-if ($_SESSION['log']){
+
+
+if ($_SESSION['loggedin']){
 $email = $_SESSION['log'];
 $sql = "SELECT * FROM reg WHERE email='$email'";
 $x = mysqli_query($db, $sql);
 $val = mysqli_fetch_assoc($x);
 $name  = $val['name'];
+$pass = $val['pwrd'];
 $num  = $val['num'];
 $dob  = $val['dob'];
+$sum = $val['summary'];
 $pic = $val['pic'];
 
 

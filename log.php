@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         return;
     }
     else{
-
+        $_SESSION['loggedin']= TRUE;
         $_SESSION['log'] = $myemail;
         $res = [
             'status' => 200,
