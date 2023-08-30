@@ -20,7 +20,7 @@ if ($_SESSION['loggedin']) {
                 } else {
                     $res = [
                         'status' => 422,
-                        'message' => 'Password does not match'
+                        'message' => 'Passwords does not match'
                     ];
                     echo json_encode($res);
                     return;
