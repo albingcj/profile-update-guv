@@ -1,12 +1,13 @@
 <?php include "head.php" ?>
 
-<body style="background-color: #0DBA4B;">
+<body>
     <div class="container d-flex justify-content-center align-items-center min-vh-100  m-xl-auto">
-        <div class=" p-3 shadow box-area m-3 rounded-3" style="background-color: #f6f6f9;">
+        <div class=" p-3 shadow-lg box-area m-3 rounded-3" style="background-color:#F6F6F9">
+            <!-- background-color: #0DBA4B -->
             <div class="row align-items-center ">
                 <div class="col-md-6 rounded-5 d-flex justify-content-center align-items-center flex-column left-box">
                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" style="width:80%">
-                        <div class="carousel-inner p-3">
+                        <div class="carousel-inner rounded-circle ">
                             <div class="carousel-item active align-content-center">
                                 <img src="img/N.png" class="img-fluid" alt="...">
                             </div>
@@ -24,6 +25,7 @@
 
                 <div class="col-md-6 right-box">
                     <div class="row align-items-center justify-content-center">
+                        <div id="errorMessage1" class="alert alert-warning d-none"></div>
                         <div class="header-text mt-2">
                             <h2>Hello,Again😊</h2>
                             <p>Welcome back.</p>
@@ -74,8 +76,7 @@
                                                 <div class=" row justify-content-center">
                                                     <!--------------------------- Box ----------------------------->
                                                     <div class="row">
-                                                        <div id="errorMessage" class="alert alert-warning d-none"></div>
-
+                                                        <div id="errorMessage2" class="alert alert-warning d-none"></div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="header-text mb-4 text-center">
@@ -207,13 +208,13 @@
                         var res = jQuery.parseJSON(response);
                         console.log(res.status);
                         if (res.status == 422) {
-                            $('#errorMessage').removeClass('d-none');
-                            $('#errorMessage').text(res.message);
+                            $('#errorMessage2').removeClass('d-none');
+                            $('#errorMessage2').text(res.message);
                             // console.log(1.5);
 
                         } else if (res.status == 200) {
                             console.log(2);
-                            $('#errorMessage').addClass('d-none');
+                            $('#errorMessage2').addClass('d-none');
                             $('#reg')[0].reset(); //change here
 
                             alertify.set('notifier', 'position', 'top-right');
@@ -222,7 +223,7 @@
 
                         } else if (res.status == 500) {
                             console.log(3);
-                            $('#errorMessage').addClass('d-none');
+                            $('#errorMessage2').addClass('d-none');
                             $('#reg')[0].reset(); //change here 
                             alertify.set('notifier', 'position', 'top-right');
                             alertify.success(res.message);
@@ -251,23 +252,23 @@
                         var res = jQuery.parseJSON(response);
                         console.log(res.status);
                         if (res.status == 422) {
-                            $('#errorMessage').removeClass('d-none');
-                            $('#errorMessage').text(res.message);
+                            $('#errorMessage1').removeClass('d-none');
+                            $('#errorMessage1').text(res.message);
                             // console.log(1.5);
 
                         } else if (res.status == 200) {
                             console.log(2);
-                            $('#errorMessage').addClass('d-none');
+                            $('#errorMessage1').addClass('d-none');
                             $('#reg')[0].reset(); //change here
 
                             alertify.set('notifier', 'position', 'top-right');
                             alertify.success(res.message);
-                            window.location.href="profile.php"
+                            window.location.href = "profile.php"
 
 
                         } else if (res.status == 500) {
                             console.log(3);
-                            $('#errorMessage').addClass('d-none');
+                            $('#errorMessage1').addClass('d-none');
                             $('#reg')[0].reset(); //change here 
                             alertify.set('notifier', 'position', 'top-right');
                             alertify.success(res.message);

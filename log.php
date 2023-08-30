@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($check == 0) { //check if existing user
         $res = [
-            'status' => 500,
+            'status' => 422,
             'message' => 'Check your email or password'
         ];
         echo json_encode($res);
