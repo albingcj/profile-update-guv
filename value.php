@@ -13,12 +13,25 @@ $email = $_SESSION['log'];
 $sql = "SELECT * FROM reg WHERE email='$email'";
 $x = mysqli_query($db, $sql);
 $val = mysqli_fetch_assoc($x);
+$pic = $val['pic'];
 $name  = $val['name'];
 $pass = $val['pwrd'];
+$gen = $val['gender'];
+$code = $val['code'];
+
 $num  = $val['num'];
 $dob  = $val['dob'];
+$smail = $val['smail'];
+$ad1 = $val['address'];
+$ad2 = $val['ad2'];
+$pin = $val['pin'];
+$city = $val['city'];
+$lang = $val['lang'];
+$nation = $val['nation'];
+
+
 $sum = $val['summary'];
-$pic = $val['pic'];
+
 
 
 // Create a DateTime object from the date of birth

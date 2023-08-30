@@ -102,7 +102,7 @@ include "value.php";
                                     <div class="col align-items-center">
                                         <div class="mb-3">
                                             <!-- <label for="formFile" class="form-label">Upload image</label> -->
-                                            <input class="x form-control" type="file" id="formFile" name="pic">
+                                            <input class="x form-control" type="file" accept="image/*" id="formFile" name="pic2">
                                         </div>
                                         <div class=" mb-3">
                                             <input type="text" class="form-control form-control-lg " placeholder="Address Line 1" name="address1">
@@ -113,7 +113,7 @@ include "value.php";
                                         </div>
                                         <div class="mb-3 row">
                                             <div class="col-6">
-                                                <input type="text" class="form-control form-control-lg " placeholder="Enter Your Pincode" minlength="6" name="pincode">
+                                                <input type="text" class="form-control form-control-lg " placeholder="Enter Your Pincode" minlength="6" name="pin">
                                             </div>
                                             <div class="col-6">
                                                 <input type="text" class="form-control form-control-lg " placeholder="Enter Your City" name="city">
@@ -121,7 +121,7 @@ include "value.php";
                                         </div>
                                         <div class="mb-3 row">
                                             <div class="col-6">
-                                                <input type="text" class="form-control form-control-lg " placeholder="Language" minlength="6" name="language">
+                                                <input type="text" class="form-control form-control-lg " placeholder="Language" name="lang">
                                             </div>
                                             <div class="col-6">
                                                 <input type="text" class="form-control form-control-lg " placeholder="Nation" name="nation">
@@ -220,109 +220,118 @@ include "value.php";
 
     </header>
     <main>
-        <div class="container bg-dark" id="cont">
-            <div class=" bg-secondary">
-                <div class="row bg-light d-flex justify-content-center">
-                    <div class="col-12 col-sm-5 d-flex align-items-center">
-                        <div class="col-12 justify-content-center">
-                            <div class="d-flex justify-content-center align-items-center">
-                                <img src="<?= $pic ?>" class=" rounded-circle p-2 shadow" alt="profile picture" id="select-profile-picture" style="width:200px; height:200px;object-fit:cover; background-color: #f6f6f9; " />
+        <div class="container bg-dark">
+            <div id="cont">
+                <div class=" bg-secondary">
+                    <div class="row bg-light d-flex justify-content-center">
+                        <div class="col-12 col-sm-5 d-flex align-items-center">
+                            <div class="col-12 justify-content-center">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <img src="<?= $pic ?>" class=" rounded-circle p-2 shadow" alt="profile picture" id="select-profile-picture" style="width:200px; height:200px;object-fit:cover; background-color: #f6f6f9; " />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-sm-7 p-2">
+                            <div class="col-auto d-flex flex-column justify-content-center g-2">
+                                <div class="col-12 mb-2">
+                                    <div class="row mb-2">
+                                        <div class="d-flex justify-content-center">
+                                            <h2><?= $name ?></h2>
+
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><button class="btn btn-link input-group-text" type="button">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </button></a>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="fs-6 text-center">
+                                            <?= $email ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card m-2 border-0 shadow-sm">
+
+                                <div class="card-head d-flex justify-content-between">
+                                    <div class="p-2 fs-5">Summary</div>
+                                    <div class="p-2 pe-3">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#sumModal">
+                                            <i class="bi bi-pencil-square text-red"></i>
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="summary p-2 overflow-auto" id="summary" style="max-height:80px"><?= $sum ?></div>
                             </div>
                         </div>
-
                     </div>
-                    <div class="col-12 col-sm-7 p-2">
-                        <div class="col-auto d-flex flex-column justify-content-center g-2">
-                            <div class="col-12 mb-2">
-                                <div class="row mb-2">
-                                    <div class="d-flex justify-content-center">
-                                        <h2><?= $name ?></h2>
+                    <div class="row pt-1 bg-light">
+                        <div class="col-12 col-lg-6 p-2">
+                            <div class="card m-2">
+                                <div class="card-head d-flex justify-content-between">
+                                    <div class="p-2 fs-5">Education</div>
+                                    <div class="p-2 pe-3">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#eduModal">
+                                            <i class="bi bi-pencil-square text-red"></i>
+                                        </a>
 
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><button class="btn btn-link input-group-text" type="button">
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="summary p-2">Add Education</div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 p-2">
+                            <div class="card m-2">
+                                <div class="card-head d-flex justify-content-between">
+                                    <div class="p-2 fs-5">Experience</div>
+                                    <div class="p-2 pe-3">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#expModal">
+                                            <i class="bi bi-pencil-square text-red"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="summary p-2">Add your Experience</div>
+                            </div>
+                        </div>
+                        <div class="col-12 p-2">
+                            <div class="card m-2">
+                                <div class="card-head d-flex justify-content-between">
+                                    <div class="p-2 fs-5">Personal Details</div>
+                                    <div class="p-2 pe-3">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#myModal">
                                                 <i class="bi bi-pencil-square"></i>
-                                            </button></a>
+                                            </a>
 
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="fs-6 text-center">
-                                        <?= $email ?>
+                                <hr />
+                                <div class="summary p-2">
+                                    <div class="card-body">
+                                        <p class="card-text"><strong>Name:</strong> <?php echo $name; ?></p>
+                                        <p class="card-text"><strong>Mobile Number:</strong> <?= "+" . $code . " " .  $num; ?></p>
+                                        <p class="card-text"><strong>Secondary Email:</strong> <?php echo $smail; ?></p>
+                                        <p class="card-text"><strong>Age:</strong> <?php echo $age; ?></p>
+                                        <p class="card-text"><strong>Gender:</strong> <?php echo $gen; ?></p>
+                                        <p class="card-text"><strong>Address:</strong> <?= $ad1 ?> <br> <?= $ad2; ?></p>
+                                        <p class="card-text"><strong>Pincode:</strong> <?php echo $pin; ?></p>
+                                        <p class="card-text"><strong>City:</strong> <?php echo $city; ?></p>
+                                        <p class="card-text"><strong>Language:</strong> <?php echo $lang; ?></p>
+                                        <p class="card-text"><strong>Country:</strong> <?php echo $nation; ?></p>
+                                        <p class="card-text"><strong>City:</strong> <?php echo $city; ?></p>
+
                                     </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="card m-2">
-
-                            <div class="card-head d-flex justify-content-between">
-                                <div class="p-2 fs-5">Summary</div>
-                                <div class="p-2 pe-3">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#sumModal">
-                                        <i class="bi bi-pencil-square text-red"></i>
-                                    </a>
-
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="summary p-2" id="summary"><?= $sum ?></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row pt-1 bg-light">
-                    <div class="col-12 col-lg-6 p-2">
-                        <div class="card m-2">
-                            <div class="card-head d-flex justify-content-between">
-                                <div class="p-2 fs-5">Education</div>
-                                <div class="p-2 pe-3">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#eduModal">
-                                        <i class="bi bi-pencil-square text-red"></i>
-                                    </a>
-
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="summary p-2">Add Education</div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-6 p-2">
-                        <div class="card m-2">
-                            <div class="card-head d-flex justify-content-between">
-                                <div class="p-2 fs-5">Experience</div>
-                                <div class="p-2 pe-3">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#expModal">
-                                        <i class="bi bi-pencil-square text-red"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="summary p-2">Add your Experience</div>
-                        </div>
-                    </div>
-                    <div class="col-12 p-2">
-                        <div class="card m-2">
-                            <div class="card-head d-flex justify-content-between">
-                                <div class="p-2 fs-5">Personal Details</div>
-                                <div class="p-2 pe-3">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><button class="btn btn-link input-group-text" type="button">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </button></a>
-
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="summary p-2">
-                                <div class="card-body">
-                                    <p class="card-text"><strong>Name:</strong> <?php echo $name; ?></p>
-                                    <p class="card-text"><strong>Mobile Number:</strong> <?php echo $num; ?></p>
-                                    <p class="card-text"><strong>Date of Birth:</strong> <?php echo $dob; ?></p>
-                                    <p class="card-text"><strong>Age:</strong> <?php echo $age; ?></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </main>
     <footer>
@@ -337,7 +346,7 @@ include "value.php";
             var formData = new FormData(this);
             formData.append("save_up", true);
 
-            formData.append("pic", $("#formFile")[0].files[0]); // Use correct ID
+            formData.append("pic2", $("#formFile")[0].files[0]); // Use correct ID
 
             $.ajax({
                 type: "POST",

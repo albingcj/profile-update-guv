@@ -50,14 +50,63 @@ if ($_SESSION['loggedin']) {
         if (!empty($_POST['smail'])) {
             $updateFields[] = "smail='" . $_POST['smail'] . "'";
         }
-        // if (!empty($_POST['pic'])) {
-        //     $file_name = $_FILES['pic']['name'];
-        // $file_tmp =$_FILES['pic']['tmp_name'];
-        // $ext = pathinfo($file_name, PATHINFO_EXTENSION);
-        // $file_name = $name.$num.".".$ext;
-        // $filePath="images/profile/".$file_name;
-        //     $updateFields[] = "pic='" . $filePath . "'";
-        // }
+
+
+        if (!empty($_FILES['pic2']['name'])) {
+            $file_name = $_FILES['pic2']['name'];
+            $file_tmp = $_FILES['pic2']['tmp_name'];
+
+            // Get the file extension
+            $ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+
+            // Allowed image extensions
+            $allowed_extensions = array('jpg', 'jpeg', 'png', 'gif');
+
+            if (in_array($ext, $allowed_extensions)) {
+                // Generate a unique file name
+                $file_name = $name . $num . "." . $ext;
+
+                $filePath = "images/profile/" . $file_name;
+                $updateFields[] = "pic='" . $filePath . "'";
+
+                // Move the uploaded file to the destination directory
+                if (move_uploaded_file($file_tmp, $filePath)) {
+                    // File moved successfully
+                } else {
+                    // Failed to move the file
+                }
+            } else {
+                // Invalid file extension
+                $res = [
+                    'status' => 422,
+                    'message' => 'Invalid file extension'
+                ];
+                echo json_encode($res);
+                return;
+            }
+        }
+
+
+
+
+        if (!empty($_POST['address1'])) {
+            $updateFields[] = "address='" . $_POST['address1'] . "'";
+        }
+        if (!empty($_POST['address2'])) {
+            $updateFields[] = "ad2='" . $_POST['address2'] . "'";
+        }
+        if (!empty($_POST['pin'])) {
+            $updateFields[] = "pin='" . $_POST['pin'] . "'";
+        }
+        if (!empty($_POST['city'])) {
+            $updateFields[] = "city='" . $_POST['city'] . "'";
+        }
+        if (!empty($_POST['state'])) {
+            $updateFields[] = "state='" . $_POST['state'] . "'";
+        }
+        if (!empty($_POST['nation'])) {
+            $updateFields[] = "nation='" . $_POST['nation'] . "'";
+        }
 
         $usercnfrm = $_SESSION['log'];
         $updateFieldsStr = implode(', ', $updateFields);
