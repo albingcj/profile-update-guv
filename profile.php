@@ -156,6 +156,8 @@ include "value.php";
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                    <div id="errorMessage" class="alert alert-warning d-none"></div>
+
                         <!-- Add your form fields for editing here -->
                         <input type="text" class="form-control" placeholder="<?= $sum ?>" name="sumin">
                         <!-- Add more fields as needed -->
@@ -176,13 +178,15 @@ include "value.php";
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="upd" enctype="multipart/form-data">
-                        <div id="errorMessage" class="alert alert-warning d-none"></div>
+                <div id="errorMessage" class="alert alert-warning d-none"></div>
+
+                    <form id="edumod" enctype="multipart/form-data">
                         <div class=" row justify-content-center">
                             <div class="row">
                                 <div class="col-sm">
-
+                                    
                                     <div class="col align-items-center">
+                                        <div id="errorMessage3" class="alert alert-warning d-none mb-3 text-center"></div>
 
                                         <div class=" mb-3">
                                             <input type="text" class="form-control form-control-lg " placeholder="University/College Name" name="uni">
@@ -255,49 +259,6 @@ include "value.php";
     </div>
 
 
-    <div class="modal fade" id="parenteditmodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Meeting</h5>
-                    <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="mdi mdi-close"></i> <!-- Font Awesome close icon -->
-                    </button>
-                </div>
-                <form id="updparent">
-                    <div class="modal-body">
-
-                        <div id="errorMessageUpdate" class="alert alert-warning d-none"></div>
-
-                        <input type="hidden" name="student_id3" id="student_id3">
-
-                        <div class="mb-3">
-                            <label for="date">Date* : </label>
-                            <input type="date" name="pmdate2" id="pmdate2" class="form-control" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="purpose-meeting">Purpose of Meeting* : </label>
-                            <br>
-                            <input type="text" name="purpose-meeting2" id="purpose-meeting2" class="form-control" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="suggestion">Suggestions* : </label>
-                            <br>
-                            <input type="text" name="suggestion2" id="suggestion2" class="form-control" required>
-                        </div>
-
-                        <input type="hidden" name="status2" id="status2">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-md" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary btn-md">Update details</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
 
     <header>
@@ -583,14 +544,14 @@ include "value.php";
                     var res = jQuery.parseJSON(response);
                     console.log(res.status);
                     if (res.status == 422) {
-                        $('#errorMessage').removeClass('d-none');
-                        $('#errorMessage').text(res.message);
+                        $('#errorMessage3').removeClass('d-none');
+                        $('#errorMessage3').text(res.message);
                         // console.log(1.5);
 
                     } else if (res.status == 200) {
                         // console.log(2);
-                        $('#errorMessage').addClass('d-none');
-                        $('#summod')[0].reset(); //change here
+                        $('#errorMessage3').addClass('d-none');
+                        $('#edumod')[0].reset(); //change here
                         $('#summary').load(window.location.href + ' #summary');
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);
@@ -598,8 +559,8 @@ include "value.php";
 
                     } else if (res.status == 500) {
                         // console.log(3);
-                        $('#errorMessage').addClass('d-none');
-                        $('#summod')[0].reset(); //change here 
+                        $('#errorMessag3').addClass('d-none');
+                        $('#edumod')[0].reset(); //change here 
                         $('#summary').load(window.location.href + ' #summary');
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);

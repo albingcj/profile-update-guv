@@ -172,17 +172,22 @@ if ($_SESSION['loggedin']) {
 
 
     if (isset($_POST['save_edu'])) {
-
-        if (!empty($_POST['sumin'])) {
+        if (!empty($_POST['deg']) && !empty($_POST['uni']) && !empty($_POST['str']) && !empty($_POST['end']) && !empty($_POST['start']) && !empty($_POST['cgpa'])) {
             $usercnfrm = $_SESSION['log'];
-            $ts = $_POST['sumin'];
-            $query = "UPDATE reg SET summary = '$ts' WHERE email='$usercnfrm'";
+            $deg = mysqli_real_escape_string($db, $_POST['deg']);
+            $uni = mysqli_real_escape_string($db, $_POST['uni']);
+            $str = mysqli_real_escape_string($db, $_POST['str']);
+            $end = mysqli_real_escape_string($db, $_POST['end']);
+            $start = mysqli_real_escape_string($db, $_POST['start']);
+            $cgpa = mysqli_real_escape_string($db, $_POST['cgpa']);
+
+            $query = "UPDATE reg SET deg='$deg', uni='$uni', str='$str', end='$end', start='$start', cgpa='$cgpa' WHERE email='$usercnfrm'";
 
             $result = mysqli_query($db, $query);
             if ($result) {
                 $res = [
                     'status' => 200,
-                    'message' => 'Summary Updated Successfully'
+                    'message' => 'Education Details Updated Successfully'
                 ];
                 echo json_encode($res);
                 return;
@@ -196,8 +201,8 @@ if ($_SESSION['loggedin']) {
             }
         } else {
             $res = [
-                'status' => 500,
-                'message' => 'No Changes Made'
+                'status' => 422,
+                'message' => 'Fill All the Details'
             ];
             echo json_encode($res);
             return;
