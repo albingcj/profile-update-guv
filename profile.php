@@ -11,7 +11,7 @@ include "value.php";
     <!-- Modal -->
     <div class="modal fade " id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg ">
-            <div class="modal-content">
+            <div class="modal-content  overflow-auto">
                 <div class="modal-header">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -52,10 +52,10 @@ include "value.php";
 
                                             <div class="col-12 mb-3 me-2">
                                                 <select class="x form-select form-control-lg" aria-label="Default select example" name="gen">
-                                                    <option selected disabled>Gender</option>
-                                                    <option value="1">Male</option>
-                                                    <option value="2">Female</option>
-                                                    <option value="3">Others</option>
+                                                    <!-- <option selected disabled>Gender</option> -->
+                                                    <option selected value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Others">Others</option>
                                                 </select>
                                             </div>
 
@@ -64,7 +64,7 @@ include "value.php";
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend me-2">
                                                 <select class="x form-select" aria-label="Select country code" name="code">
-                                                    <option selected disabled>+</option>
+                                                    <!-- <option selected disabled>+</option> -->
                                                     <option value="1">+01</option>
                                                     <option value="7">+07</option>
                                                     <option value="33">+33</option>
@@ -72,7 +72,7 @@ include "value.php";
                                                     <option value="49">+49</option>
                                                     <option value="81">+81</option>
                                                     <option value="86">+86</option>
-                                                    <option value="91">+91</option>
+                                                    <option selected value="91">+91</option>
                                                     <option value="92">+92</option>
                                                     <option value="93">+93</option>
                                                     <option value="94">+94</option>
@@ -87,12 +87,49 @@ include "value.php";
                                             <input class="x form-control" type="date" id="formdate" name="dob">
                                         </div>
                                         <div class="mb-3">
-                                            <!-- <label for="formFile" class="form-label">Upload image</label> -->
-                                            <input class="x form-control" type="file" id="formFile" name="pic">
+                                            <!-- <input class="x form-control" type="file" id="formFile" name="pic"> -->
+                                            <input type="email" class="form-control form-control-lg " placeholder="Secondary E-mail" name="email2">
+
                                         </div>
 
                                     </div>
 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm">
+
+                                    <div class="col align-items-center">
+                                        <div class="mb-3">
+                                            <!-- <label for="formFile" class="form-label">Upload image</label> -->
+                                            <input class="x form-control" type="file" id="formFile" name="pic">
+                                        </div>
+                                        <div class=" mb-3">
+                                            <input type="text" class="form-control form-control-lg " placeholder="Address Line 1" name="address1">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control form-control-lg " placeholder="Address Line 2" name="address2">
+
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <div class="col-6">
+                                                <input type="text" class="form-control form-control-lg " placeholder="Enter Your Pincode" minlength="6" name="pincode">
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="text" class="form-control form-control-lg " placeholder="Enter Your City" name="city">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <div class="col-6">
+                                                <input type="text" class="form-control form-control-lg " placeholder="Language" minlength="6" name="language">
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="text" class="form-control form-control-lg " placeholder="Nation" name="nation">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -120,7 +157,7 @@ include "value.php";
                     </div>
                     <div class="modal-body">
                         <!-- Add your form fields for editing here -->
-                        <input type="text" class="form-control" placeholder="<?= $summary?>" name="sumin" >
+                        <input type="text" class="form-control" placeholder="<?= $summary ?>" name="sumin">
                         <!-- Add more fields as needed -->
                     </div>
                     <div class="modal-footer">
@@ -171,42 +208,52 @@ include "value.php";
     </div>
     <header>
         <!-- place navbar here -->
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <!-- <div class="col-auto"> -->
+                <a name="logout" id="logout" class="btn btn-danger" href="logout.php" role="button">Logout</a>
+                <!-- </div> -->
+
+            </div>
+        </nav>
+
     </header>
     <main>
-        <div class="container-fluid bg-dark" id="cont">
-            <div class="col bg-secondary">
-                <div class="row bg-light justify-content-center">
-                    <div class="col-12 col-sm-5 d-flex justify-content-center">
-                        <div class="img">
-                            <img src="<?= $pic ?>" class=" rounded-circle p-4" alt="profile picture" id="select-profile-picture" style="width:180px; height:180px;object-fit:cover" />
-                        </div>
-                    </div>
-                    <div class="col-auto d-flex flex-column justify-content-center g-2">
-                        <div class="col-12 col-sm-7 mb-2">
-                            <div class="row mb-2">
-                                <div class="d-flex">
-                                    <h2><?= $name ?></h2>
-
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><button class="btn btn-link input-group-text" type="button">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </button></a>
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="fs-6">
-                                    <?= $email ?>
-                                </div>
+        <div class="container bg-dark" id="cont">
+            <div class=" bg-secondary">
+                <div class="row bg-light d-flex justify-content-center">
+                    <div class="col-12 col-sm-5 d-flex align-items-center">
+                        <div class="col-12 justify-content-center">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <img src="<?= $pic ?>" class=" rounded-circle p-4" alt="profile picture" id="select-profile-picture" style="width:200px; height:200px;object-fit:cover" />
                             </div>
                         </div>
-                        <div class="col-auto">
-                            <div><a name="logout" id="logout" class="btn btn-danger" href="logout.php" role="button">Logout</a></div>
-                        </div>
+
                     </div>
-                </div>
-                <div class="row pt-4 bg-light">
-                    <div class="col-12 p-4">
-                        <div class="card m-3">
+                    <div class="col-12 col-sm-7 p-2">
+                        <div class="col-auto d-flex flex-column justify-content-center g-2">
+                            <div class="col-12 mb-2">
+                                <div class="row mb-2">
+                                    <div class="d-flex justify-content-center">
+                                        <h2><?= $name ?></h2>
+
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><button class="btn btn-link input-group-text" type="button">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </button></a>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="fs-6 text-center">
+                                        <?= $email ?>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card m-2">
+
                             <div class="card-head d-flex justify-content-between">
                                 <div class="p-2 fs-5">Summary</div>
                                 <div class="p-2 pe-3">
@@ -220,8 +267,10 @@ include "value.php";
                             <div class="summary p-2" id="summary"><?= $sum ?></div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-6 p-4">
-                        <div class="card m-3">
+                </div>
+                <div class="row pt-1 bg-light">
+                    <div class="col-12 col-lg-6 p-2">
+                        <div class="card m-2">
                             <div class="card-head d-flex justify-content-between">
                                 <div class="p-2 fs-5">Education</div>
                                 <div class="p-2 pe-3">
@@ -235,8 +284,8 @@ include "value.php";
                             <div class="summary p-2">Add Education</div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-6 p-4">
-                        <div class="card m-3">
+                    <div class="col-12 col-lg-6 p-2">
+                        <div class="card m-2">
                             <div class="card-head d-flex justify-content-between">
                                 <div class="p-2 fs-5">Experience</div>
                                 <div class="p-2 pe-3">
@@ -249,8 +298,8 @@ include "value.php";
                             <div class="summary p-2">Add your Experience</div>
                         </div>
                     </div>
-                    <div class="col-12 p-4">
-                        <div class="card m-3">
+                    <div class="col-12 p-2">
+                        <div class="card m-2">
                             <div class="card-head d-flex justify-content-between">
                                 <div class="p-2 fs-5">Personal Details</div>
                                 <div class="p-2 pe-3">
