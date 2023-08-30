@@ -13,6 +13,7 @@ $email = $_SESSION['log'];
 $sql = "SELECT * FROM reg WHERE email='$email'";
 $x = mysqli_query($db, $sql);
 $val = mysqli_fetch_assoc($x);
+
 $pic = $val['pic'];
 $name  = $val['name'];
 $pass = $val['pwrd'];

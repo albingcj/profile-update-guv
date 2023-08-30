@@ -169,20 +169,67 @@ include "value.php";
         </div>
     </div>
     <div class="modal fade" id="eduModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="editModalLabel">Edit Profile</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Add your form fields for editing here -->
-                    <input type="text" class="form-control" placeholder="Edit your name">
-                    <!-- Add more fields as needed -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <form id="upd" enctype="multipart/form-data">
+                        <div id="errorMessage" class="alert alert-warning d-none"></div>
+                        <div class=" row justify-content-center">
+                            <div class="row">
+                                <div class="col-sm">
+
+                                    <div class="col align-items-center">
+
+                                        <div class=" mb-3">
+                                            <input type="text" class="form-control form-control-lg " placeholder="University/College Name" name="uni">
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+
+                                                <input type="text" class="form-control form-control-lg " placeholder="Degree" name="deg">
+                                            </div>
+                                            <div class="col-6">
+
+                                                <input type="text" class="form-control form-control-lg " placeholder="Stream" name="str">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <div class="col-6 ">
+                                                <div class="row mb-3">
+                                                    <div class="col-6">
+
+                                                        <input type="number" class="form-control form-control-lg " value="2015" name="start">
+                                                    </div>
+                                                    <div class="col-6">
+
+                                                        <input type="number" class="form-control form-control-lg " value="2017" name="end">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="text" class="form-control form-control-lg " placeholder="CGPA" name="cgpa">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input-group mb-2">
+                                        <button class="btn btn-lg btn-primary btn-outline-light border-0 w-100 fs-6" type="submit">Update</button>
+                                        <!-- style="background-color: #0DBA4B;" -->
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -206,11 +253,58 @@ include "value.php";
             </div>
         </div>
     </div>
+
+
+    <div class="modal fade" id="parenteditmodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Meeting</h5>
+                    <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="mdi mdi-close"></i> <!-- Font Awesome close icon -->
+                    </button>
+                </div>
+                <form id="updparent">
+                    <div class="modal-body">
+
+                        <div id="errorMessageUpdate" class="alert alert-warning d-none"></div>
+
+                        <input type="hidden" name="student_id3" id="student_id3">
+
+                        <div class="mb-3">
+                            <label for="date">Date* : </label>
+                            <input type="date" name="pmdate2" id="pmdate2" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="purpose-meeting">Purpose of Meeting* : </label>
+                            <br>
+                            <input type="text" name="purpose-meeting2" id="purpose-meeting2" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="suggestion">Suggestions* : </label>
+                            <br>
+                            <input type="text" name="suggestion2" id="suggestion2" class="form-control" required>
+                        </div>
+
+                        <input type="hidden" name="status2" id="status2">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-md" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary btn-md">Update details</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
     <header>
         <!-- place navbar here -->
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <nav class="navbar navbar-expand-sm navbar-light bg-success fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="img/N2.svg" alt="logo" width="50px"></a>
+                <a class="navbar-brand" href=""><img src="img/N2.svg" alt="logo" width="50px"></a>
                 <!-- <div class="col-auto"> -->
                 <a name="logout" id="logout" class="btn text-light btn-danger btn-outline-dark border-0" href="logout.php" role="button">Logout</a>
                 <!-- </div> -->
@@ -220,7 +314,10 @@ include "value.php";
 
     </header>
     <main>
-        <div class="container bg-dark">
+        <div class="container bg-light">
+            <div class="waste" style="height:75px">
+
+            </div>
             <div id="cont">
                 <div class=" bg-secondary">
                     <div class="row bg-light d-flex justify-content-center">
@@ -307,26 +404,59 @@ include "value.php";
                                     <div class="p-2 fs-5">Personal Details</div>
                                     <div class="p-2 pe-3">
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#myModal">
-                                                <i class="bi bi-pencil-square"></i>
-                                            </a>
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
 
                                     </div>
                                 </div>
                                 <hr />
                                 <div class="summary p-2">
                                     <div class="card-body">
-                                        <p class="card-text"><strong>Name:</strong> <?php echo $name; ?></p>
-                                        <p class="card-text"><strong>Mobile Number:</strong> <?= "+" . $code . " " .  $num; ?></p>
-                                        <p class="card-text"><strong>Secondary Email:</strong> <?php echo $smail; ?></p>
-                                        <p class="card-text"><strong>Age:</strong> <?php echo $age; ?></p>
-                                        <p class="card-text"><strong>Gender:</strong> <?php echo $gen; ?></p>
-                                        <p class="card-text"><strong>Address:</strong> <?= $ad1 ?> <br> <?= $ad2; ?></p>
-                                        <p class="card-text"><strong>Pincode:</strong> <?php echo $pin; ?></p>
-                                        <p class="card-text"><strong>City:</strong> <?php echo $city; ?></p>
-                                        <p class="card-text"><strong>Language:</strong> <?php echo $lang; ?></p>
-                                        <p class="card-text"><strong>Country:</strong> <?php echo $nation; ?></p>
-                                        <p class="card-text"><strong>City:</strong> <?php echo $city; ?></p>
-
+                                        <table class="table table-hover">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">Name</th>
+                                                        <td><?php echo $name; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Mobile Number</th>
+                                                        <td><?= "+" . $code . " " .  $num; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Secondary Email</th>
+                                                        <td><?php echo $smail; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Age</th>
+                                                        <td><?php echo $age; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Gender</th>
+                                                        <td><?php echo $gen; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Address</th>
+                                                        <td><?= $ad1 ?> <br> <?= $ad2; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Pincode</th>
+                                                        <td><?php echo $pin; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">City</th>
+                                                        <td><?php echo $city; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Language</th>
+                                                        <td><?php echo $lang; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Country</th>
+                                                        <td><?php echo $nation; ?></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                     </div>
                                 </div>
                             </div>
@@ -334,6 +464,7 @@ include "value.php";
                     </div>
                 </div>
             </div>
+
         </div>
     </main>
     <footer>
@@ -422,6 +553,51 @@ include "value.php";
 
                     } else if (res.status == 500) {
                         console.log(3);
+                        $('#errorMessage').addClass('d-none');
+                        $('#summod')[0].reset(); //change here 
+                        $('#summary').load(window.location.href + ' #summary');
+                        alertify.set('notifier', 'position', 'top-right');
+                        alertify.success(res.message);
+                    }
+                }
+            });
+        });
+
+
+        $(document).on('submit', '#edumod', function(e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+            formData.append("save_edu", true);
+
+            // formData.append("pic", $("#formFile")[0].files[0]); // Use correct ID
+
+            $.ajax({
+                type: "POST",
+                url: "upd.php",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    console.log(response);
+                    var res = jQuery.parseJSON(response);
+                    console.log(res.status);
+                    if (res.status == 422) {
+                        $('#errorMessage').removeClass('d-none');
+                        $('#errorMessage').text(res.message);
+                        // console.log(1.5);
+
+                    } else if (res.status == 200) {
+                        // console.log(2);
+                        $('#errorMessage').addClass('d-none');
+                        $('#summod')[0].reset(); //change here
+                        $('#summary').load(window.location.href + ' #summary');
+                        alertify.set('notifier', 'position', 'top-right');
+                        alertify.success(res.message);
+
+
+                    } else if (res.status == 500) {
+                        // console.log(3);
                         $('#errorMessage').addClass('d-none');
                         $('#summod')[0].reset(); //change here 
                         $('#summary').load(window.location.href + ' #summary');

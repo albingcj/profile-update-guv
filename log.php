@@ -15,29 +15,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         return;
     }
     
-    $emquery = "SELECT * FROM reg where email='$myemail' AND pwrd='$mypassword'";
-    $check = mysqli_num_rows(mysqli_query($db, $emquery));
+    // Use parameter binding in the query
+    $emquery = "SELECT * FROM reg where email=? AND pwrd=?";
+    $stmt = mysqli_prepare($db, $emquery);
+    
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "ss", $myemail, $mypassword);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
 
-    if ($check == 0) { //check if existing user
+        if ($result) {
+            if (mysqli_num_rows($result) > 0) {
+                $_SESSION['loggedin'] = true;
+                $_SESSION['log'] = $myemail;
+                $res = [
+                    'status' => 200,
+                    'message' => 'Logged in Successfully'
+                ];
+            } else {
+                $res = [
+                    'status' => 422,
+                    'message' => 'Check your email or password'
+                ];
+                session_destroy();
+            }
+        } else {
+            // Error in executing query
+            $res = [
+                'status' => 500,
+                'message' => 'Database error'
+            ];
+        }
+
+        mysqli_stmt_close($stmt);
+    } else {
+        // Error in preparing statement
         $res = [
-            'status' => 422,
-            'message' => 'Check your email or password'
+            'status' => 500,
+            'message' => 'Database error'
         ];
-        echo json_encode($res);
-        session_destroy();
-        return;
     }
-    else{
-        $_SESSION['loggedin']= TRUE;
-        $_SESSION['log'] = $myemail;
-        $res = [
-            'status' => 200,
-            'message' => 'Logged in Successfully'
-        ];
-        echo json_encode($res);
-        return;
-    }
+
+    echo json_encode($res);
+    return;
 }
-
-
 ?>

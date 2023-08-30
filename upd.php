@@ -50,7 +50,9 @@ if ($_SESSION['loggedin']) {
         if (!empty($_POST['smail'])) {
             $updateFields[] = "smail='" . $_POST['smail'] . "'";
         }
-
+        if (!empty($_POST['lang'])) {
+            $updateFields[] = "lang='" . $_POST['lang'] . "'";
+        }
 
         if (!empty($_FILES['pic2']['name'])) {
             $file_name = $_FILES['pic2']['name'];
@@ -136,6 +138,40 @@ if ($_SESSION['loggedin']) {
 
 
     if (isset($_POST['save_sum'])) {
+
+        if (!empty($_POST['sumin'])) {
+            $usercnfrm = $_SESSION['log'];
+            $ts = $_POST['sumin'];
+            $query = "UPDATE reg SET summary = '$ts' WHERE email='$usercnfrm'";
+
+            $result = mysqli_query($db, $query);
+            if ($result) {
+                $res = [
+                    'status' => 200,
+                    'message' => 'Summary Updated Successfully'
+                ];
+                echo json_encode($res);
+                return;
+            } else {
+                $res = [
+                    'status' => 500,
+                    'message' => 'Details Not Updated'
+                ];
+                echo json_encode($res);
+                return;
+            }
+        } else {
+            $res = [
+                'status' => 500,
+                'message' => 'No Changes Made'
+            ];
+            echo json_encode($res);
+            return;
+        }
+    }
+
+
+    if (isset($_POST['save_edu'])) {
 
         if (!empty($_POST['sumin'])) {
             $usercnfrm = $_SESSION['log'];
