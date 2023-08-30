@@ -9,7 +9,7 @@
                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" style="width:80%">
                         <div class="carousel-inner rounded-circle ">
                             <div class="carousel-item active align-content-center">
-                                <img src="img/N.png" class="img-fluid" alt="...">
+                                <img src="img/N2.svg" class="img-fluid" alt="...">
                             </div>
                             <div class="carousel-item">
                                 <img src="https://www.guvi.in/build/images/women3.4e20db6b776ff35ab2fa90c5e0e72447.webp" class="img-fluid p-4" alt="...">

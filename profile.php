@@ -11,7 +11,7 @@ include "value.php";
     <!-- Modal -->
     <div class="modal fade " id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg ">
-            <div class="modal-content  overflow-auto">
+            <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -210,7 +210,7 @@ include "value.php";
         <!-- place navbar here -->
         <nav class="navbar navbar-expand-sm navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="#"><img src="img/N2.svg" alt="logo" width="50px"></a>
                 <!-- <div class="col-auto"> -->
                 <a name="logout" id="logout" class="btn text-light btn-danger btn-outline-dark border-0" href="logout.php" role="button">Logout</a>
                 <!-- </div> -->
@@ -265,7 +265,9 @@ include "value.php";
                                     </div>
                                 </div>
                                 <hr />
+                                <!-- <div class="summary p-2 overflow-auto" id="summary" style="max-height:80px"><?= $sum ?></div> -->
                                 <div class="summary p-2 overflow-auto" id="summary" style="max-height:80px"><?= $sum ?></div>
+
                             </div>
                         </div>
                     </div>
