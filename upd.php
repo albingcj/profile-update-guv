@@ -44,6 +44,12 @@ if ($_SESSION['loggedin']) {
         if (!empty($_POST['num'])) {
             $updateFields[] = "num='" . $_POST['num'] . "'";
         }
+        if (!empty($_POST['dob'])) {
+            $updateFields[] = "dob='" . $_POST['dob'] . "'";
+        }
+        if (!empty($_POST['smail'])) {
+            $updateFields[] = "smail='" . $_POST['smail'] . "'";
+        }
         // if (!empty($_POST['pic'])) {
         //     $file_name = $_FILES['pic']['name'];
         // $file_tmp =$_FILES['pic']['tmp_name'];

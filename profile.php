@@ -88,7 +88,7 @@ include "value.php";
                                         </div>
                                         <div class="mb-3">
                                             <!-- <input class="x form-control" type="file" id="formFile" name="pic"> -->
-                                            <input type="email" class="form-control form-control-lg " placeholder="Secondary E-mail" name="email2">
+                                            <input type="email" class="form-control form-control-lg " placeholder="Secondary E-mail" name="smail">
 
                                         </div>
 
@@ -157,7 +157,7 @@ include "value.php";
                     </div>
                     <div class="modal-body">
                         <!-- Add your form fields for editing here -->
-                        <input type="text" class="form-control" placeholder="<?= $summary ?>" name="sumin">
+                        <input type="text" class="form-control" placeholder="<?= $sum ?>" name="sumin">
                         <!-- Add more fields as needed -->
                     </div>
                     <div class="modal-footer">
@@ -212,7 +212,7 @@ include "value.php";
             <div class="container">
                 <a class="navbar-brand" href="#">Navbar</a>
                 <!-- <div class="col-auto"> -->
-                <a name="logout" id="logout" class="btn btn-danger" href="logout.php" role="button">Logout</a>
+                <a name="logout" id="logout" class="btn text-light btn-danger btn-outline-dark border-0" href="logout.php" role="button">Logout</a>
                 <!-- </div> -->
 
             </div>
@@ -226,7 +226,7 @@ include "value.php";
                     <div class="col-12 col-sm-5 d-flex align-items-center">
                         <div class="col-12 justify-content-center">
                             <div class="d-flex justify-content-center align-items-center">
-                                <img src="<?= $pic ?>" class=" rounded-circle p-4" alt="profile picture" id="select-profile-picture" style="width:200px; height:200px;object-fit:cover" />
+                                <img src="<?= $pic ?>" class=" rounded-circle p-2 shadow" alt="profile picture" id="select-profile-picture" style="width:200px; height:200px;object-fit:cover; background-color: #f6f6f9; " />
                             </div>
                         </div>
 
