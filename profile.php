@@ -325,7 +325,6 @@ include "value.php";
                                 <hr />
                                 <!-- <div class="summary p-2 overflow-auto" id="summary" style="max-height:80px"><?= $sum ?></div> -->
                                 <div class="summary p-2 overflow-auto" id="summary" style="max-height:80px"><?= $sum ?></div>
-
                             </div>
                         </div>
                     </div>
@@ -486,7 +485,7 @@ include "value.php";
             var formData = new FormData(this);
             formData.append("save_sum", true);
 
-            formData.append("pic", $("#formFile")[0].files[0]); // Use correct ID
+            // formData.append("pic", $("#formFile")[0].files[0]); // Use correct ID
 
             $.ajax({
                 type: "POST",
@@ -504,8 +503,9 @@ include "value.php";
                         // console.log(1.5);
 
                     } else if (res.status == 200) {
-                        console.log(2);
+                        // console.log(2);
                         $('#errorMessage').addClass('d-none');
+                        $('#summary').html(res.message); 
                         $('#summod')[0].reset(); //change here
                         $('#summary').load(window.location.href + ' #summary');
                         alertify.set('notifier', 'position', 'top-right');
@@ -552,6 +552,7 @@ include "value.php";
                         // console.log(2);
                         $('#errorMessage3').addClass('d-none');
                         $('#edumod')[0].reset(); //change here
+                        $('#eduModal').modal('hide');
                         $('#summary').load(window.location.href + ' #summary');
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);
