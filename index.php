@@ -1,4 +1,4 @@
-<?php include "head.php" ?>
+<?php include "head.php"; ?>
 
 <body>
     <div class="container d-flex justify-content-center align-items-center min-vh-100  m-xl-auto">
@@ -6,7 +6,7 @@
             <!-- background-color: #0DBA4B -->
             <div class="row align-items-center ">
                 <div class="col-md-6 rounded-5 d-flex justify-content-center align-items-center flex-column left-box">
-                    <div id="carouselExampleSlidesOnly" class="carousel slide carwid" data-bs-ride="carousel" data-bs-interval="3000">
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" style="width:80%">
                         <div class="carousel-inner rounded-circle ">
                             <div class="carousel-item active align-content-center">
                                 <img src="img/N2.svg" class="img-fluid" alt="...">
@@ -15,7 +15,7 @@
                                 <img src="https://www.guvi.in/build/images/women3.4e20db6b776ff35ab2fa90c5e0e72447.webp" class="img-fluid p-4" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="https://www.guvi.in/build/images/women2.efc6d3e133bad2107652725034c91338.webp" class="img-fluid p-4" alt="...">
+                                <img src="https://www.guvi.in/build/images/women2.efc6d3e133bad2107652725034c91338.webp" class="img-fluid p-4" alt="..." style="width: auto;">
                             </div>
                         </div>
                     </div>
@@ -52,11 +52,12 @@
                             </div>
                             <div class="input-group mb-2">
                                 <button class="btn btn-lg btn-primary btn-outline-light border-0 w-100 fs-6">Login</button>
+                                <!-- style="background-color: #0DBA4B;" -->
                             </div>
                             <!-- Google Sign In Button -->
                             <div class="input-group mb-3">
                                 <button class="btn btn-lg btn-info btn-outline-light border-0  w-100 fs-6">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" class="me-2 iwid">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" style="width:20px" class="me-2">
                                     <a href="#" class="text-decoration-none text-dark"> Login with Google</a>
                                 </button>
                             </div>
@@ -158,11 +159,12 @@
                                                         <div class="col">
                                                             <div class="input-group mb-2">
                                                                 <button class="btn btn-lg btn-primary btn-outline-light border-0 w-100 fs-6" type="submit">Register</button>
+                                                                <!-- style="background-color: #0DBA4B;" -->
                                                             </div>
                                                             <!-- Google Sign In Button -->
                                                             <div class="input-group mb-3">
                                                                 <button class="btn btn-lg btn-info btn-outline-light border-0  w-100 fs-6">
-                                                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" class="me-2 iwid">
+                                                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" style="width:20px" class="me-2">
                                                                     <a href="#" class="text-decoration-none text-dark">
                                                                         Signup with Google</a>
                                                                 </button>
@@ -215,7 +217,8 @@
                             $('#errorMessage2').addClass('d-none');
                             $('#reg')[0].reset(); //change here
                             // $('#myModal').hide();
-                            $('#myModal').modal('hide');
+                             $('#myModal').modal('hide');
+
                             alertify.set('notifier', 'position', 'top-right');
                             alertify.success(res.message);
 
@@ -260,6 +263,7 @@
                             // console.log(2);
                             $('#errorMessage1').addClass('d-none');
                             $('#reg')[0].reset(); //change here
+                            $('#myModal').modal('hide');
 
                             alertify.set('notifier', 'position', 'top-right');
                             alertify.success(res.message);
@@ -277,55 +281,7 @@
                 });
 
             });
-            // $(document).on('submit', '#reg', function(e) {
-            //     e.preventDefault();
 
-            //     var formData = new FormData(this);
-            //     formData.append("save_reg", true);
-
-            //     // formData.append("img", $("input[name='img']")[0].files[0]);
-
-            //     $.ajax({
-            //         type: "POST",
-            //         url: "reg.php",
-            //         data: formData,
-            //         processData: false,
-            //         contentType: false,
-            //         success: function(response) {
-            //             var res = jQuery.parseJSON(response);
-            //             if (res.status == 422) {
-            //                 $('#errorMessage').removeClass('d-none');
-            //                 $('#errorMessage').text(res.message);
-
-            //             } else if (res.status == 200) {
-            //                 $('#errorMessage').addClass('d-none');
-            //                 $('#reg')[0].reset();
-
-            //                 // Close the modal
-            //                 closeModal();
-
-            //                 // Show Alertify success message
-            //                 alertify.set('notifier', 'position', 'top-right');
-            //                 alertify.success(res.message);
-
-            //                 // Redirect to login page
-            //                 setTimeout(function() {
-            //                     window.location.href = 'login.html'; // Change this to your login page URL
-            //                 }, 2000); // Redirect after 2 seconds
-            //             } else if (res.status == 500) {
-            //                 $('#errorMessage').addClass('d-none');
-            //                 $('#reg')[0].reset();
-            //                 alertify.set('notifier', 'position', 'top-right');
-            //                 alertify.success(res.message);
-            //             }
-            //         }
-            //     });
-            // });
-
-            // function closeModal() {
-            //     console.log('closeModal function called'); // Add this line for debugging
-            //     $('#myModal').modal('hide');
-            // }
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>

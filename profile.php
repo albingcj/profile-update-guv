@@ -248,13 +248,12 @@ include "value.php";
                 <div class="modal-body">
                     <div id="errorMessage4" class="alert alert-warning d-none"></div>
 
-                    <form id="edumod" enctype="multipart/form-data">
+                    <form id="expmod" enctype="multipart/form-data">
                         <div class=" row justify-content-center">
                             <div class="row">
                                 <div class="col-sm">
 
                                     <div class="col align-items-center">
-                                        <div id="errorMessage3" class="alert alert-warning d-none mb-3 text-center"></div>
 
                                         <div class=" mb-3">
                                             <input type="text" class="form-control form-control-lg " placeholder="Comapany Name" name="comp">
@@ -445,7 +444,7 @@ include "value.php";
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 p-2">
-                            <div class="card m-2">
+                            <div class="card m-2" id = "expe">
                                 <div class="card-head d-flex justify-content-between">
                                     <div class="p-2 fs-5">Experience</div>
                                     <div class="p-2 pe-3">
@@ -455,7 +454,7 @@ include "value.php";
                                     </div>
                                 </div>
                                 <hr />
-                                <div class="summary p-2">
+                                <div class="summary p-2 " >
                                     <div class=" p-2 rounded bg-light">
                                         <div id="tableContainer" class=" table-responsive rounded">
                                             <table class="table table-bordered">
@@ -588,6 +587,8 @@ include "value.php";
                         console.log(2);
                         $('#errorMessage').addClass('d-none');
                         $('#upd')[0].reset(); //change here
+                        $('#myModal').modal('hide');
+
                         $('#cont').load(window.location.href + ' #cont');
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);
@@ -635,6 +636,8 @@ include "value.php";
                         $('#errorMessage').addClass('d-none');
                         $('#summary').html(res.message);
                         $('#summod')[0].reset(); //change here
+                        $('#sumModal').modal('hide');
+
                         $('#summary').load(window.location.href + ' #summary');
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);
@@ -680,7 +683,7 @@ include "value.php";
                         // console.log(2);
                         $('#errorMessage3').addClass('d-none');
                         $('#edumod')[0].reset(); //change here
-                        // $('#eduModal').modal('hide');
+                        $('#eduModal').modal('hide');
                         $('#educat').load(window.location.href + ' #educat');
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);
@@ -725,7 +728,7 @@ include "value.php";
                         // console.log(2);
                         $('#errorMessage4').addClass('d-none');
                         $('#expmod')[0].reset(); //change here
-                        // $('#eduModal').modal('hide');
+                        $('#expModal').modal('hide');
                         $('#expe').load(window.location.href + ' #expe');
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);

@@ -42,12 +42,12 @@ $cgpa = $val['cgpa'];
 
 
 $comp = $val['comp'];
-$role = $val['role'];
+$role = $val['rolex'];
 $s1 = $val['s1'];
 $e1 = $val['e1'];
 $month1 = $val['month1'];
 $month2 = $val['month2'];
-$desc = $val['desc'];
+$desc = $val['descx'];
 
 
 

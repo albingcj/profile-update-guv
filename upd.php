@@ -209,23 +209,23 @@ if ($_SESSION['loggedin']) {
     if (isset($_POST['save_exp'])) {
         if (!empty($_POST['comp']) && !empty($_POST['role']) && !empty($_POST['s1']) && !empty($_POST['e1']) && !empty($_POST['month1']) && !empty($_POST['month2']) && !empty($_POST['desc'])) {
             $usercnfrm = $_SESSION['log'];
-            $comp = mysqli_real_escape_string($conn, $_POST['comp']);
-            $role = mysqli_real_escape_string($conn, $_POST['role']);
-            $s1 = mysqli_real_escape_string($conn, $_POST['s1']);
-            $e1 = mysqli_real_escape_string($conn, $_POST['e1']);
-            $month1 = mysqli_real_escape_string($conn, $_POST['month1']);
-            $month2 = mysqli_real_escape_string($conn, $_POST['month2']);
-            $desc = mysqli_real_escape_string($conn, $_POST['desc']);
+            $comp = mysqli_real_escape_string($db, $_POST['comp']);
+            $role = mysqli_real_escape_string($db, $_POST['role']);
+            $s1 = mysqli_real_escape_string($db, $_POST['s1']);
+            $e1 = mysqli_real_escape_string($db, $_POST['e1']);
+            $month1 = mysqli_real_escape_string($db, $_POST['month1']);
+            $month2 = mysqli_real_escape_string($db, $_POST['month2']);
+            $desc = mysqli_real_escape_string($db, $_POST['desc']);
 
             // SQL query to update the data
             $query = "UPDATE reg
-        SET comp = '$comp', role = '$role', s1 = '$s1', e1 = '$e1', month1 = '$month1', month2 = '$month2', desc = '$desc' 
-        WHERE email='usercnfrm'";
+        SET comp = '$comp', rolex = '$role', s1 = '$s1', e1 = '$e1', month1 = '$month1', month2 = '$month2', descx = '$desc' 
+        WHERE email='$usercnfrm'";
             $result = mysqli_query($db, $query);
             if ($result) {
                 $res = [
                     'status' => 200,
-                    'message' => 'Education Details Updated Successfully'
+                    'message' => 'Education Details Updated Successfully '
                 ];
                 echo json_encode($res);
                 return;
