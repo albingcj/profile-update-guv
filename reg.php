@@ -10,7 +10,6 @@ if (isset($_POST['save_reg'])) {
     $code = mysqli_real_escape_string($db, $_POST['code']);
     $num = mysqli_real_escape_string($db, $_POST['num']);
     $date = mysqli_real_escape_string($db, $_POST['dob']);
-    // $pic = mysqli_real_escape_string($db, $_POST['pic']);
     //pic start
     $file_name = $_FILES['pic']['name'];
 	$file_tmp =$_FILES['pic']['tmp_name'];
@@ -19,7 +18,7 @@ if (isset($_POST['save_reg'])) {
 	$filePath="images/profile/".$file_name;
     //pic end
 
-    if ($name == NULL or $email == NULL) {
+    if ($pass1 == NULL or $email == NULL) {
         $res = [
             'status' => 422,
             'message' => 'All fields are mandatory'

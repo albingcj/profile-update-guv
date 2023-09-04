@@ -132,11 +132,8 @@ if ($_SESSION['loggedin']) {
             return;
         }
     }
-
-
-
-
-
+    
+    //summary mod
     if (isset($_POST['save_sum'])) {
 
         if (!empty($_POST['sumin'])) {
@@ -170,7 +167,7 @@ if ($_SESSION['loggedin']) {
         }
     }
 
-
+    //edumod
     if (isset($_POST['save_edu'])) {
         if (!empty($_POST['deg']) && !empty($_POST['uni']) && !empty($_POST['str']) && !empty($_POST['end']) && !empty($_POST['start']) && !empty($_POST['cgpa'])) {
             $usercnfrm = $_SESSION['log'];
@@ -183,6 +180,47 @@ if ($_SESSION['loggedin']) {
 
             $query = "UPDATE reg SET deg='$deg', uni='$uni', str='$str', end='$end', start='$start', cgpa='$cgpa' WHERE email='$usercnfrm'";
 
+            $result = mysqli_query($db, $query);
+            if ($result) {
+                $res = [
+                    'status' => 200,
+                    'message' => 'Education Details Updated Successfully'
+                ];
+                echo json_encode($res);
+                return;
+            } else {
+                $res = [
+                    'status' => 500,
+                    'message' => 'Details Not Updated'
+                ];
+                echo json_encode($res);
+                return;
+            }
+        } else {
+            $res = [
+                'status' => 422,
+                'message' => 'Fill All the Details'
+            ];
+            echo json_encode($res);
+            return;
+        }
+    }
+
+    if (isset($_POST['save_exp'])) {
+        if (!empty($_POST['comp']) && !empty($_POST['role']) && !empty($_POST['s1']) && !empty($_POST['e1']) && !empty($_POST['month1']) && !empty($_POST['month2']) && !empty($_POST['desc'])) {
+            $usercnfrm = $_SESSION['log'];
+            $comp = mysqli_real_escape_string($conn, $_POST['comp']);
+            $role = mysqli_real_escape_string($conn, $_POST['role']);
+            $s1 = mysqli_real_escape_string($conn, $_POST['s1']);
+            $e1 = mysqli_real_escape_string($conn, $_POST['e1']);
+            $month1 = mysqli_real_escape_string($conn, $_POST['month1']);
+            $month2 = mysqli_real_escape_string($conn, $_POST['month2']);
+            $desc = mysqli_real_escape_string($conn, $_POST['desc']);
+
+            // SQL query to update the data
+            $query = "UPDATE reg
+        SET comp = '$comp', role = '$role', s1 = '$s1', e1 = '$e1', month1 = '$month1', month2 = '$month2', desc = '$desc' 
+        WHERE email='usercnfrm'";
             $result = mysqli_query($db, $query);
             if ($result) {
                 $res = [

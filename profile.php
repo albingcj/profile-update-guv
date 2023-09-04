@@ -156,7 +156,7 @@ include "value.php";
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                    <div id="errorMessage" class="alert alert-warning d-none"></div>
+                        <div id="errorMessage" class="alert alert-warning d-none"></div>
 
                         <!-- Add your form fields for editing here -->
                         <input type="text" class="form-control" placeholder="<?= $sum ?>" name="sumin">
@@ -178,13 +178,13 @@ include "value.php";
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                <div id="errorMessage" class="alert alert-warning d-none"></div>
+                    <div id="errorMessage" class="alert alert-warning d-none"></div>
 
                     <form id="edumod" enctype="multipart/form-data">
                         <div class=" row justify-content-center">
                             <div class="row">
                                 <div class="col-sm">
-                                    
+
                                     <div class="col align-items-center">
                                         <div id="errorMessage3" class="alert alert-warning d-none mb-3 text-center"></div>
 
@@ -239,20 +239,97 @@ include "value.php";
         </div>
     </div>
     <div class="modal fade" id="expModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="editModalLabel">Edit Profile</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Add your form fields for editing here -->
-                    <input type="text" class="form-control" placeholder="Edit your name">
-                    <!-- Add more fields as needed -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <div id="errorMessage4" class="alert alert-warning d-none"></div>
+
+                    <form id="edumod" enctype="multipart/form-data">
+                        <div class=" row justify-content-center">
+                            <div class="row">
+                                <div class="col-sm">
+
+                                    <div class="col align-items-center">
+                                        <div id="errorMessage3" class="alert alert-warning d-none mb-3 text-center"></div>
+
+                                        <div class=" mb-3">
+                                            <input type="text" class="form-control form-control-lg " placeholder="Comapany Name" name="comp">
+                                        </div>
+                                        <div class=" mb-3">
+                                            <input type="text" class="form-control form-control-lg " placeholder="Role" name="role">
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <div class="row col">
+                                                <div class="col-6">
+
+                                                    <input type="number" class="form-control form-control-lg " value="2017" name="s1">
+                                                </div>
+                                                <div class="col-6">
+                                                    <select class="form-select form-select-lg" name="month1">
+                                                        <option value="January" selected>January</option>
+                                                        <option value="February">February</option>
+                                                        <option value="March">March</option>
+                                                        <option value="April">April</option>
+                                                        <option value="May">May</option>
+                                                        <option value="June">June</option>
+                                                        <option value="July">July</option>
+                                                        <option value="August">August</option>
+                                                        <option value="September">September</option>
+                                                        <option value="October">October</option>
+                                                        <option value="November">November</option>
+                                                        <option value="December">December</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row col-1 text-center justify-content-center align-content-center">
+                                                -to-
+                                            </div>
+                                            <div class="row col">
+                                                <div class="col-6">
+                                                    <input type="number" class="form-control form-control-lg " value="2018" name="e1">
+                                                </div>
+                                                <div class="col-6">
+                                                    <select class="form-select form-select-lg" name="month2">
+                                                        <option value="January" selected>January</option>
+                                                        <option value="February">February</option>
+                                                        <option value="March">March</option>
+                                                        <option value="April">April</option>
+                                                        <option value="May">May</option>
+                                                        <option value="June">June</option>
+                                                        <option value="July">July</option>
+                                                        <option value="August">August</option>
+                                                        <option value="September">September</option>
+                                                        <option value="October">October</option>
+                                                        <option value="November">November</option>
+                                                        <option value="December">December</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <textarea class="form-control form-control-lg" name="desc" rows="2" placeholder="Enter your description here"></textarea>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input-group mb-2">
+                                        <button class="btn btn-lg btn-primary btn-outline-light border-0 w-100 fs-6" type="submit">Update</button>
+                                        <!-- style="background-color: #0DBA4B;" -->
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -262,8 +339,7 @@ include "value.php";
 
 
     <header>
-        <!-- place navbar here -->
-        <nav class="navbar navbar-expand-sm navbar-light bg-success fixed-top">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top shadow">
             <div class="container">
                 <a class="navbar-brand" href=""><img src="img/N2.svg" alt="logo" width="50px"></a>
                 <!-- <div class="col-auto"> -->
@@ -277,7 +353,6 @@ include "value.php";
     <main>
         <div class="container bg-light">
             <div class="waste" style="height:75px">
-
             </div>
             <div id="cont">
                 <div class=" bg-secondary">
@@ -330,7 +405,7 @@ include "value.php";
                     </div>
                     <div class="row pt-1 bg-light">
                         <div class="col-12 col-lg-6 p-2">
-                            <div class="card m-2">
+                            <div class=" card m-2 " id="educat">
                                 <div class="card-head d-flex justify-content-between">
                                     <div class="p-2 fs-5">Education</div>
                                     <div class="p-2 pe-3">
@@ -341,7 +416,32 @@ include "value.php";
                                     </div>
                                 </div>
                                 <hr />
-                                <div class="summary p-2">Add Education</div>
+                                <div class="p-2">
+                                    <div class=" p-2 rounded bg-light">
+                                        <div id="tableContainer" class=" table-responsive rounded">
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="2">University/College Name:</td>
+                                                        <td colspan="2"><?= $uni; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Degree:</td>
+                                                        <td><?= $deg; ?></td>
+                                                        <td>Stream:</td>
+                                                        <td><?= $str; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Years:</td>
+                                                        <td><?= $start; ?> - <?= $end; ?></td>
+                                                        <td>CGPA:</td>
+                                                        <td><?= $cgpa; ?></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 p-2">
@@ -355,7 +455,35 @@ include "value.php";
                                     </div>
                                 </div>
                                 <hr />
-                                <div class="summary p-2">Add your Experience</div>
+                                <div class="summary p-2">
+                                    <div class=" p-2 rounded bg-light">
+                                        <div id="tableContainer" class=" table-responsive rounded">
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="2">Company Name:</td>
+                                                        <td colspan="2"><?= $comp; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">Role:</td>
+                                                        <td colspan="2"><?= $role; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><?= $s1; ?></td>
+                                                        <td><?= $month1; ?></td>
+                                                        <td><?= $e1; ?></td>
+                                                        <td><?= $month2; ?></td>
+
+                                                    </tr>
+                                                    <tr>
+
+                                                        <td colspan="4"><?= $desc; ?></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12 p-2">
@@ -377,7 +505,7 @@ include "value.php";
                                                 <tbody>
                                                     <tr>
                                                         <th scope="row">Name</th>
-                                                        <td><?php echo $name; ?></td>
+                                                        <td><?= $name; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Mobile Number</th>
@@ -385,15 +513,15 @@ include "value.php";
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Secondary Email</th>
-                                                        <td><?php echo $smail; ?></td>
+                                                        <td><?= $smail; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Age</th>
-                                                        <td><?php echo $age; ?></td>
+                                                        <td><?= $age; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Gender</th>
-                                                        <td><?php echo $gen; ?></td>
+                                                        <td><?= $gen; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Address</th>
@@ -401,19 +529,19 @@ include "value.php";
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Pincode</th>
-                                                        <td><?php echo $pin; ?></td>
+                                                        <td><?= $pin; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">City</th>
-                                                        <td><?php echo $city; ?></td>
+                                                        <td><?= $city; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Language</th>
-                                                        <td><?php echo $lang; ?></td>
+                                                        <td><?= $lang; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Country</th>
-                                                        <td><?php echo $nation; ?></td>
+                                                        <td><?= $nation; ?></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -505,7 +633,7 @@ include "value.php";
                     } else if (res.status == 200) {
                         // console.log(2);
                         $('#errorMessage').addClass('d-none');
-                        $('#summary').html(res.message); 
+                        $('#summary').html(res.message);
                         $('#summod')[0].reset(); //change here
                         $('#summary').load(window.location.href + ' #summary');
                         alertify.set('notifier', 'position', 'top-right');
@@ -552,8 +680,8 @@ include "value.php";
                         // console.log(2);
                         $('#errorMessage3').addClass('d-none');
                         $('#edumod')[0].reset(); //change here
-                        $('#eduModal').modal('hide');
-                        $('#summary').load(window.location.href + ' #summary');
+                        // $('#eduModal').modal('hide');
+                        $('#educat').load(window.location.href + ' #educat');
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);
 
@@ -562,7 +690,52 @@ include "value.php";
                         // console.log(3);
                         $('#errorMessag3').addClass('d-none');
                         $('#edumod')[0].reset(); //change here 
-                        $('#summary').load(window.location.href + ' #summary');
+                        $('#educat').load(window.location.href + ' #educat');
+                        alertify.set('notifier', 'position', 'top-right');
+                        alertify.success(res.message);
+                    }
+                }
+            });
+        });
+
+        $(document).on('submit', '#expmod', function(e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+            formData.append("save_exp", true);
+
+            // formData.append("pic", $("#formFile")[0].files[0]); // Use correct ID
+
+            $.ajax({
+                type: "POST",
+                url: "upd.php",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    console.log(response);
+                    var res = jQuery.parseJSON(response);
+                    console.log(res.status);
+                    if (res.status == 422) {
+                        $('#errorMessage4').removeClass('d-none');
+                        $('#errorMessage4').text(res.message);
+                        // console.log(1.5);
+
+                    } else if (res.status == 200) {
+                        // console.log(2);
+                        $('#errorMessage4').addClass('d-none');
+                        $('#expmod')[0].reset(); //change here
+                        // $('#eduModal').modal('hide');
+                        $('#expe').load(window.location.href + ' #expe');
+                        alertify.set('notifier', 'position', 'top-right');
+                        alertify.success(res.message);
+
+
+                    } else if (res.status == 500) {
+                        // console.log(3);
+                        $('#errorMessag4').addClass('d-none');
+                        $('#expmod')[0].reset(); //change here 
+                        $('#expe').load(window.location.href + ' #expe');
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);
                     }

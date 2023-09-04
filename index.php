@@ -2,11 +2,11 @@
 
 <body>
     <div class="container d-flex justify-content-center align-items-center min-vh-100  m-xl-auto">
-        <div class=" p-3 shadow-lg box-area m-3 rounded-3" style="background-color:#F6F6F9">
+        <div class=" p-3 shadow-lg box-area m-3 rounded-3 cback">
             <!-- background-color: #0DBA4B -->
             <div class="row align-items-center ">
                 <div class="col-md-6 rounded-5 d-flex justify-content-center align-items-center flex-column left-box">
-                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" style="width:80%">
+                    <div id="carouselExampleSlidesOnly" class="carousel slide carwid" data-bs-ride="carousel" data-bs-interval="3000">
                         <div class="carousel-inner rounded-circle ">
                             <div class="carousel-item active align-content-center">
                                 <img src="img/N2.svg" class="img-fluid" alt="...">
@@ -15,7 +15,7 @@
                                 <img src="https://www.guvi.in/build/images/women3.4e20db6b776ff35ab2fa90c5e0e72447.webp" class="img-fluid p-4" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="https://www.guvi.in/build/images/women2.efc6d3e133bad2107652725034c91338.webp" class="img-fluid p-4" alt="..." style="width: auto;">
+                                <img src="https://www.guvi.in/build/images/women2.efc6d3e133bad2107652725034c91338.webp" class="img-fluid p-4" alt="...">
                             </div>
                         </div>
                     </div>
@@ -52,12 +52,11 @@
                             </div>
                             <div class="input-group mb-2">
                                 <button class="btn btn-lg btn-primary btn-outline-light border-0 w-100 fs-6">Login</button>
-                                <!-- style="background-color: #0DBA4B;" -->
                             </div>
                             <!-- Google Sign In Button -->
                             <div class="input-group mb-3">
                                 <button class="btn btn-lg btn-info btn-outline-light border-0  w-100 fs-6">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" style="width:20px" class="me-2">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" class="me-2 iwid">
                                     <a href="#" class="text-decoration-none text-dark"> Login with Google</a>
                                 </button>
                             </div>
@@ -159,12 +158,11 @@
                                                         <div class="col">
                                                             <div class="input-group mb-2">
                                                                 <button class="btn btn-lg btn-primary btn-outline-light border-0 w-100 fs-6" type="submit">Register</button>
-                                                                <!-- style="background-color: #0DBA4B;" -->
                                                             </div>
                                                             <!-- Google Sign In Button -->
                                                             <div class="input-group mb-3">
                                                                 <button class="btn btn-lg btn-info btn-outline-light border-0  w-100 fs-6">
-                                                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" style="width:20px" class="me-2">
+                                                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" class="me-2 iwid">
                                                                     <a href="#" class="text-decoration-none text-dark">
                                                                         Signup with Google</a>
                                                                 </button>
@@ -213,16 +211,18 @@
                             // console.log(1.5);
 
                         } else if (res.status == 200) {
-                            console.log(2);
+                            // console.log(2);
                             $('#errorMessage2').addClass('d-none');
                             $('#reg')[0].reset(); //change here
-
+                            // $('#myModal').hide();
+                            $('#myModal').modal('hide');
                             alertify.set('notifier', 'position', 'top-right');
                             alertify.success(res.message);
 
 
+
                         } else if (res.status == 500) {
-                            console.log(3);
+                            // console.log(3);
                             $('#errorMessage2').addClass('d-none');
                             $('#reg')[0].reset(); //change here 
                             alertify.set('notifier', 'position', 'top-right');
@@ -257,7 +257,7 @@
                             // console.log(1.5);
 
                         } else if (res.status == 200) {
-                            console.log(2);
+                            // console.log(2);
                             $('#errorMessage1').addClass('d-none');
                             $('#reg')[0].reset(); //change here
 
@@ -267,7 +267,7 @@
 
 
                         } else if (res.status == 500) {
-                            console.log(3);
+                            // console.log(3);
                             $('#errorMessage1').addClass('d-none');
                             $('#reg')[0].reset(); //change here 
                             alertify.set('notifier', 'position', 'top-right');

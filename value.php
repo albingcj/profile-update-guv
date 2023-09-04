@@ -33,6 +33,22 @@ $nation = $val['nation'];
 
 $sum = $val['summary'];
 
+$uni = $val['uni'];
+$deg = $val['deg'];
+$str = $val['str'];
+$start = $val['start'];
+$end = $val['end'];
+$cgpa = $val['cgpa'];
+
+
+$comp = $val['comp'];
+$role = $val['role'];
+$s1 = $val['s1'];
+$e1 = $val['e1'];
+$month1 = $val['month1'];
+$month2 = $val['month2'];
+$desc = $val['desc'];
+
 
 
 // Create a DateTime object from the date of birth
