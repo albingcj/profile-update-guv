@@ -159,7 +159,7 @@ include "value.php";
                         <div id="errorMessage" class="alert alert-warning d-none"></div>
 
                         <!-- Add your form fields for editing here -->
-                        <input type="text" class="form-control" placeholder="<?= $sum ?>" name="sumin">
+                        <input type="text" class="form-control" placeholder="Edit your Summary" name="sumin">
                         <!-- Add more fields as needed -->
                     </div>
                     <div class="modal-footer">
@@ -397,14 +397,14 @@ include "value.php";
                                     </div>
                                 </div>
                                 <hr />
-                                <!-- <div class="summary p-2 overflow-auto" id="summary" style="max-height:80px"><?= $sum ?></div> -->
-                                <div class="summary p-2 overflow-auto" id="summary" style="max-height:80px"><?= $sum ?></div>
+                                <div class="summary p-2 overflow-auto" style="max-height:80px">
+                                <div  id="summary"><?= $sum ?></div></div>
                             </div>
                         </div>
                     </div>
                     <div class="row pt-1 bg-light">
                         <div class="col-12 col-lg-6 p-2">
-                            <div class=" card m-2 " id="educat">
+                            <div class=" card m-2 ">
                                 <div class="card-head d-flex justify-content-between">
                                     <div class="p-2 fs-5">Education</div>
                                     <div class="p-2 pe-3">
@@ -418,7 +418,7 @@ include "value.php";
                                 <div class="p-2">
                                     <div class=" p-2 rounded bg-light">
                                         <div id="tableContainer" class=" table-responsive rounded">
-                                            <table class="table table-bordered">
+                                            <table class="table table-bordered"  id="educat">
                                                 <tbody>
                                                     <tr>
                                                         <td colspan="2">University/College Name:</td>
@@ -444,7 +444,7 @@ include "value.php";
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 p-2">
-                            <div class="card m-2" id = "expe">
+                            <div class="card m-2">
                                 <div class="card-head d-flex justify-content-between">
                                     <div class="p-2 fs-5">Experience</div>
                                     <div class="p-2 pe-3">
@@ -456,8 +456,8 @@ include "value.php";
                                 <hr />
                                 <div class="summary p-2 " >
                                     <div class=" p-2 rounded bg-light">
-                                        <div id="tableContainer" class=" table-responsive rounded">
-                                            <table class="table table-bordered">
+                                        <div id="expe" class=" table-responsive rounded">
+                                            <table class="table table-bordered" >
                                                 <tbody>
                                                     <tr>
                                                         <td colspan="2">Company Name:</td>

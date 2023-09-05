@@ -1,24 +1,26 @@
 <?php
 include("config.php");
 session_start();
+
 if (isset($_POST['save_reg'])) {
-    $name = mysqli_real_escape_string($db, $_POST['name']);
-    $email = mysqli_real_escape_string($db, $_POST['email']);
-    $pass1 = mysqli_real_escape_string($db, $_POST['pass1']);
-    $pass2 = mysqli_real_escape_string($db, $_POST['pass2']);
-    $gender = mysqli_real_escape_string($db, $_POST['gen']);
-    $code = mysqli_real_escape_string($db, $_POST['code']);
-    $num = mysqli_real_escape_string($db, $_POST['num']);
-    $date = mysqli_real_escape_string($db, $_POST['dob']);
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $pass1 = $_POST['pass1'];
+    $pass2 = $_POST['pass2'];
+    $gender = $_POST['gen'];
+    $code = $_POST['code'];
+    $num = $_POST['num'];
+    $date = $_POST['dob'];
+    
     //pic start
     $file_name = $_FILES['pic']['name'];
-	$file_tmp =$_FILES['pic']['tmp_name'];
-	$ext = pathinfo($file_name, PATHINFO_EXTENSION);
-	$file_name = $name.$num.".".$ext;
-	$filePath="images/profile/".$file_name;
+    $file_tmp = $_FILES['pic']['tmp_name'];
+    $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+    $file_name = $name . $num . "." . $ext;
+    $filePath = "images/profile/" . $file_name;
     //pic end
 
-    if ($pass1 == NULL or $email == NULL) {
+    if (empty($name) || empty($email) || empty($pass1)) {
         $res = [
             'status' => 422,
             'message' => 'All fields are mandatory'
@@ -27,7 +29,7 @@ if (isset($_POST['save_reg'])) {
         return;
     }
 
-    if ($pass1 != $pass2){
+    if ($pass1 != $pass2) {
         $res = [
             'status' => 422,
             'message' => 'Password does not match'
@@ -36,27 +38,68 @@ if (isset($_POST['save_reg'])) {
         return;
     }
 
-    $emquery = "SELECT email FROM reg WHERE email='$email'";
-    $check = mysqli_num_rows(mysqli_query($db, $emquery));
-
-    if ($check == 0) { // check for existing user
+    $emquery = "SELECT email FROM reg WHERE email = ?";
+    $stmt = mysqli_prepare($db, $emquery);
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_store_result($stmt);
+    
+    if (mysqli_stmt_num_rows($stmt) === 0) { // Check for existing user
         // Move the uploaded file to the desired location
-
-
         if (move_uploaded_file($file_tmp, $filePath)) {
             // File was successfully moved, proceed with inserting the user details into the database
             $query = "INSERT INTO reg (name, email, pwrd, gender, code, num, dob, pic) 
-            VALUES ('$name', '$email', '$pass1', '$gender', '$code', '$num', '$date', '$filePath')";
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-            $query_run = mysqli_query($db, $query);
-    
+            $stmt = mysqli_prepare($db, $query);
+            mysqli_stmt_bind_param($stmt, "ssssssss", $name, $email, $pass1, $gender, $code, $num, $date, $filePath);
+            $query_run = mysqli_stmt_execute($stmt);
+
             if ($query_run) {
                 $res = [
                     'status' => 200,
                     'message' => 'Details Updated Successfully'
                 ];
-                echo json_encode($res);
-                return;
+
+                // JSON file update
+                $jsonFilePath = 'data.json';
+
+                // Create an array with the user data to be added to the JSON file
+                $newUserData = [
+                    'name' => $name,
+                    'email' => $email,
+                    'password' => $pass1,
+                    'dob' => $date, 
+                    'code' => $code, 
+                    'phone_number' => $num, 
+                    'gender' => $gender, 
+                ];
+
+                // Read existing JSON data
+                $jsonString = file_get_contents($jsonFilePath);
+                $jsonData = json_decode($jsonString, true);
+
+                if ($jsonData === null) {
+                    $jsonData = [];
+                }
+
+                // Add new user data to the existing JSON data
+                $jsonData[] = $newUserData;
+
+                // Encode the updated data and write it back to the JSON file
+                $updatedJsonString = json_encode($jsonData, JSON_PRETTY_PRINT);
+                if (file_put_contents($jsonFilePath, $updatedJsonString)) {
+                    // JSON file updated successfully
+                    echo json_encode($res);
+                    return;
+                } else {
+                    $res = [
+                        'status' => 500,
+                        'message' => 'Failed to update JSON file'
+                    ];
+                    echo json_encode($res);
+                    return;
+                }
             } else {
                 $res = [
                     'status' => 500,
@@ -81,7 +124,8 @@ if (isset($_POST['save_reg'])) {
         echo json_encode($res);
         return;
     }
-    
+
+    // Close the prepared statement
+    mysqli_stmt_close($stmt);
 }
 ?>
-
