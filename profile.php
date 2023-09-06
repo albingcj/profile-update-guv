@@ -487,7 +487,7 @@ include "value.php";
                         </div>
                         <div class="col-12 p-2">
                             <div class="card m-2 border-0 shadow-sm">
-                                <div class="card-head d-flex justify-content-between  p-2 px-3">
+                                <div class="card-head d-flex justify-content-center  p-2 px-3">
                                     <div class="p-2 fs-5">Personal Details</div>
                                     <div class="p-2 pe-3">
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#myModal">
