@@ -7,7 +7,7 @@ include "value.php";
 ?>
 
 
-<body>
+<body class="">
     <!-- Modal -->
     <div class="modal fade " id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg ">
@@ -367,9 +367,9 @@ include "value.php";
                         <div class="col-12 col-sm-7 p-2">
                             <div class="col-auto d-flex flex-column justify-content-center g-2">
                                 <div class="col-12 mb-2">
-                                    <div class="row mb-2">
-                                        <div class="d-flex justify-content-center">
-                                            <h2><?= $name ?></h2>
+                                    <div class="row mt-2">
+                                        <div class="d-flex justify-content-center text-dark">
+                                            <h2 style="filter:drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.2))"><?= $name ?></h2>
 
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><button class="btn btn-link input-group-text" type="button">
                                                     <i class="bi bi-pencil-square"></i>
@@ -387,7 +387,7 @@ include "value.php";
                             </div>
                             <div class="card m-2 border-0 shadow-sm">
 
-                                <div class="card-head d-flex justify-content-between">
+                                <div class="card-head d-flex justify-content-between  p-2 px-3">
                                     <div class="p-2 fs-5">Summary</div>
                                     <div class="p-2 pe-3">
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#sumModal">
@@ -398,14 +398,15 @@ include "value.php";
                                 </div>
                                 <hr />
                                 <div class="summary p-2 overflow-auto" style="max-height:80px">
-                                <div  id="summary"><?= $sum ?></div></div>
+                                    <div id="summary"><?= $sum ?></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row pt-1 bg-light">
+                    <div class="row pt-1 bg-light ">
                         <div class="col-12 col-lg-6 p-2">
-                            <div class=" card m-2 ">
-                                <div class="card-head d-flex justify-content-between">
+                            <div class=" card m-2 border-0 shadow-sm" style="height: 100%;">
+                                <div class="card-head d-flex justify-content-between  p-2 px-3">
                                     <div class="p-2 fs-5">Education</div>
                                     <div class="p-2 pe-3">
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#eduModal">
@@ -418,7 +419,7 @@ include "value.php";
                                 <div class="p-2">
                                     <div class=" p-2 rounded bg-light">
                                         <div id="tableContainer" class=" table-responsive rounded">
-                                            <table class="table table-bordered"  id="educat">
+                                            <table class="table table-hover" id="educat">
                                                 <tbody>
                                                     <tr>
                                                         <td colspan="2">University/College Name:</td>
@@ -444,8 +445,8 @@ include "value.php";
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 p-2">
-                            <div class="card m-2">
-                                <div class="card-head d-flex justify-content-between">
+                            <div class="card m-2 border-0 shadow-sm" style="height: 100%;">
+                                <div class="card-head d-flex justify-content-between  p-2 px-3">
                                     <div class="p-2 fs-5">Experience</div>
                                     <div class="p-2 pe-3">
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#expModal">
@@ -454,25 +455,24 @@ include "value.php";
                                     </div>
                                 </div>
                                 <hr />
-                                <div class="summary p-2 " >
+                                <div class="summary p-2 ">
                                     <div class=" p-2 rounded bg-light">
                                         <div id="expe" class=" table-responsive rounded">
-                                            <table class="table table-bordered" >
+                                            <table class="table table-hover">
                                                 <tbody>
                                                     <tr>
                                                         <td colspan="2">Company Name:</td>
                                                         <td colspan="2"><?= $comp; ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="2">Role:</td>
-                                                        <td colspan="2"><?= $role; ?></td>
-                                                    </tr>
-                                                    <tr>
                                                         <td><?= $s1; ?></td>
                                                         <td><?= $month1; ?></td>
                                                         <td><?= $e1; ?></td>
                                                         <td><?= $month2; ?></td>
-
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">Role:</td>
+                                                        <td colspan="2"><?= $role; ?></td>
                                                     </tr>
                                                     <tr>
 
@@ -486,8 +486,8 @@ include "value.php";
                             </div>
                         </div>
                         <div class="col-12 p-2">
-                            <div class="card m-2">
-                                <div class="card-head d-flex justify-content-between">
+                            <div class="card m-2 border-0 shadow-sm">
+                                <div class="card-head d-flex justify-content-between  p-2 px-3">
                                     <div class="p-2 fs-5">Personal Details</div>
                                     <div class="p-2 pe-3">
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#myModal">
