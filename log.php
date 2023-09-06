@@ -47,6 +47,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (mysqli_num_rows($result) > 0) {
                 $_SESSION['loggedin'] = true;
                 $_SESSION['log'] = $myemail;
+
+                if (isset($_POST['remember'])) {
+                    setcookie('email_id', $myemail, time() + (60 * 60 * 24));
+                    setcookie('password', $mypassword, time() + (60 * 60 * 24));
+                } else {
+                    setcookie('email_id', $myemail, time() - (60 * 60 * 24));
+                    setcookie('password', $mypassword, time() - (60 * 60 * 24));
+                }
+
+
                 $res = [
                     'status' => 200,
                     'message' => 'Logged in Successfully'

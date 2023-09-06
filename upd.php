@@ -7,9 +7,10 @@ if ($_SESSION['loggedin']) {
 
     if (isset($_POST['save_up'])) {
         $updateFields = array();
-
+        $updateFields2 = array();
         if (!empty($_POST['name'])) {
             $updateFields[] = "name='" . $_POST['name'] . "'";
+            $updateFields2['name'] = $_POST['name'];
         }
 
 
@@ -17,6 +18,7 @@ if ($_SESSION['loggedin']) {
             if ($_POST['pass1'] == $pass) {
                 if (($_POST['pass2']) == ($_POST['pass3']) and (!empty($_POST['pass2']) && !empty($_POST['pass3']))) {
                     $updateFields[] = "pwrd='" . $_POST['pass2'] . "'";
+                    $updateFields2['password'] = $_POST['pass2'];
                 } else {
                     $res = [
                         'status' => 422,
@@ -37,21 +39,27 @@ if ($_SESSION['loggedin']) {
 
         if (!empty($_POST['gen'])) {
             $updateFields[] = "gender='" . $_POST['gen'] . "'";
+            $updateFields2['gender'] = $_POST['gen'];
         }
         if (!empty($_POST['code'])) {
             $updateFields[] = "code='" . $_POST['code'] . "'";
+            $updateFields2['code'] = $_POST['code'];
         }
         if (!empty($_POST['num'])) {
             $updateFields[] = "num='" . $_POST['num'] . "'";
+            $updateFields2['phone_number'] = $_POST['num'];
         }
         if (!empty($_POST['dob'])) {
             $updateFields[] = "dob='" . $_POST['dob'] . "'";
+            $updateFields2['dob'] = $_POST['dob'];
         }
         if (!empty($_POST['smail'])) {
             $updateFields[] = "smail='" . $_POST['smail'] . "'";
+            $updateFields2['secondary_mail'] = $_POST['smail'];
         }
         if (!empty($_POST['lang'])) {
             $updateFields[] = "lang='" . $_POST['lang'] . "'";
+            $updateFields2['language'] = $_POST['lang'];
         }
 
         if (!empty($_FILES['pic2']['name'])) {
@@ -93,46 +101,98 @@ if ($_SESSION['loggedin']) {
 
         if (!empty($_POST['address1'])) {
             $updateFields[] = "address='" . $_POST['address1'] . "'";
+            $updateFields2['address1'] = $_POST['address1'];
         }
         if (!empty($_POST['address2'])) {
             $updateFields[] = "ad2='" . $_POST['address2'] . "'";
+            $updateFields2['address2'] = $_POST['address2'];
         }
         if (!empty($_POST['pin'])) {
             $updateFields[] = "pin='" . $_POST['pin'] . "'";
+            $updateFields2['pincode'] = $_POST['pin'];
         }
         if (!empty($_POST['city'])) {
             $updateFields[] = "city='" . $_POST['city'] . "'";
+            $updateFields2['city'] = $_POST['city'];
         }
         if (!empty($_POST['state'])) {
             $updateFields[] = "state='" . $_POST['state'] . "'";
+            $updateFields2['state'] = $_POST['state'];
         }
         if (!empty($_POST['nation'])) {
             $updateFields[] = "nation='" . $_POST['nation'] . "'";
+            $updateFields2['nation'] = $_POST['nation'];
         }
+
+
+        // ... your previous code ...
+
 
         $usercnfrm = $_SESSION['log'];
         $updateFieldsStr = implode(', ', $updateFields);
 
         $query = "UPDATE reg SET $updateFieldsStr WHERE email='$usercnfrm'";
-
         $result = mysqli_query($db, $query);
+
         if ($result) {
-            $res = [
-                'status' => 200,
-                'message' => 'Details Updated Successfully'
-            ];
-            echo json_encode($res);
-            return;
+            // Read existing JSON data
+            $jsonFilePath = 'data.json';
+            $jsonData = json_decode(file_get_contents($jsonFilePath), true);
+
+            if (is_array($jsonData)) {
+                // Find and update the user's data in the JSON array
+                foreach ($jsonData as &$user) {
+                    if ($user['email'] === $usercnfrm) {
+                        foreach ($updateFields2 as $key => $value) {
+                            $user[$key] = $value;
+                        }
+                        break;
+                    }
+                }
+
+                // Encode the updated data and write it back to the JSON file
+                $updatedJsonString = json_encode($jsonData, JSON_PRETTY_PRINT);
+                if (file_put_contents($jsonFilePath, $updatedJsonString)) {
+                    // JSON file updated successfully
+                    $res = [
+                        'status' => 200,
+                        'message' => 'Details Updated Successfully'
+                    ];
+                    echo json_encode($res);
+                    return;
+                } else {
+                    // Failed to update JSON file
+                    $res = [
+                        'status' => 500,
+                        'message' => 'Failed to update JSON file'
+                    ];
+                    echo json_encode($res);
+                    return;
+                }
+            } else {
+                // JSON data is not an array
+                $res = [
+                    'status' => 500,
+                    'message' => 'Invalid JSON data'
+                ];
+                echo json_encode($res);
+                return;
+            }
         } else {
+            // Database update failed
             $res = [
                 'status' => 500,
-                'message' => 'Details Not Updated'
+                'message' => 'Database update failed'
             ];
             echo json_encode($res);
             return;
         }
+
+
+        // ... rest of your code ...
+
     }
-    
+
     //summary mod
     if (isset($_POST['save_sum'])) {
 

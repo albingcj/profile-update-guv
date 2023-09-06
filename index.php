@@ -1,4 +1,13 @@
-<?php include "head.php"; ?>
+<?php include "head.php";
+if (isset($_COOKIE['email_id']) && isset($_COOKIE['password'])) {
+    $id = $_COOKIE['email_id'];
+    $pa = $_COOKIE['password'];
+} else {
+    $id = '';
+    $pa = '';
+}
+
+?>
 
 <body>
     <div class="container d-flex justify-content-center align-items-center min-vh-100  m-xl-auto">
@@ -32,14 +41,14 @@
                         </div>
                         <form id="log">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control form-control-lg rounded" placeholder="E-mail address" required name="email">
+                                <input type="text" class="form-control form-control-lg rounded" placeholder="E-mail address" required name="email" value="<?= $id ?>">
                             </div>
                             <div class="mb-3">
-                                <input type="password" class="form-control form-control-lg " name="upwd" id="exampleInputPassword" placeholder="Password" minlength="8" required>
+                                <input type="password" class="form-control form-control-lg " name="upwd" id="exampleInputPassword" placeholder="Password" minlength="8" required value="<?= $pa ?>">
                             </div>
                             <div class="input-group mb-3 d-flex justify-content-between">
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="formCheck">
+                                    <input type="checkbox" class="form-check-input" id="formCheck" name="remember">
                                     <label for="formCheck" class="form-check-label text-secondary">
                                         <small>
                                             Remember Me
@@ -217,7 +226,7 @@
                             $('#errorMessage2').addClass('d-none');
                             $('#reg')[0].reset(); //change here
                             // $('#myModal').hide();
-                             $('#myModal').modal('hide');
+                            $('#myModal').modal('hide');
 
                             alertify.set('notifier', 'position', 'top-right');
                             alertify.success(res.message);
@@ -281,7 +290,6 @@
                 });
 
             });
-
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>

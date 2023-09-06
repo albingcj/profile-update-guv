@@ -64,7 +64,7 @@ if (isset($_POST['save_reg'])) {
                 // JSON file update
                 $jsonFilePath = 'data.json';
 
-                // Create an array with the user data to be added to the JSON file
+                //array added to the JSON file
                 $newUserData = [
                     'name' => $name,
                     'email' => $email,
@@ -73,6 +73,14 @@ if (isset($_POST['save_reg'])) {
                     'code' => $code, 
                     'phone_number' => $num, 
                     'gender' => $gender, 
+                    'secondary_mail' => 0,
+                    'language' => 0,
+                    'address1' => 0,
+                    'address2' => 0,
+                    'pincode' => 0,
+                    'city' => 0,
+                    'state' => 0,
+                    'nation' => 0,
                 ];
 
                 // Read existing JSON data
