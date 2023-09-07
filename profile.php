@@ -357,9 +357,9 @@ include "value.php";
                 <div class=" bg-secondary">
                     <div class="row bg-light d-flex justify-content-center">
                         <div class="col-12 col-sm-5 d-flex align-items-center">
-                            <div class="col-12 justify-content-center">
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <img src="<?= $pic ?>" class=" rounded-circle p-2 shadow" alt="profile picture" id="select-profile-picture" style="width:200px; height:200px;object-fit:cover; background-color: #f6f6f9; " />
+                            <div class="col-12 justify-content-center"> 
+                                <div class="d-flex justify-content-center align-items-center" >
+                                    <img src="<?= $pic ?>" class=" rounded-circle p-2 shadow" alt="profile picture"  style="width:200px; height:200px;object-fit:cover; background-color: #f6f6f9; " />
                                 </div>
                             </div>
 
@@ -587,11 +587,11 @@ include "value.php";
                         console.log(2);
                         $('#errorMessage').addClass('d-none');
                         $('#upd')[0].reset();
+                        $('#cont').load(window.location.href + ' #cont');
                         $('#myModal').modal('hide');
 
-                        // $('#cont').load(window.location.href + ' #cont');
-
-                        window.location.reload(true);
+                        // $('#select-profile-picture').load(window.location.href + '#select-profile-picture');
+                        // $('#select-profile-picture img').attr('src', res.newImageUrl);
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);
 
@@ -729,7 +729,7 @@ include "value.php";
                     } else if (res.status == 200) {
                         // console.log(2);
                         $('#errorMessage4').addClass('d-none');
-                        $('#expmod')[0].reset();
+                        $('#expmod')[0].reset(); 
                         $('#expModal').modal('hide');
                         $('#expe').load(window.location.href + ' #expe');
                         alertify.set('notifier', 'position', 'top-right');
@@ -739,7 +739,7 @@ include "value.php";
                     } else if (res.status == 500) {
                         // console.log(3);
                         $('#errorMessag4').addClass('d-none');
-                        $('#expmod')[0].reset();
+                        $('#expmod')[0].reset(); 
                         $('#expe').load(window.location.href + ' #expe');
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);
