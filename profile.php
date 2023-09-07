@@ -589,7 +589,9 @@ include "value.php";
                         $('#upd')[0].reset();
                         $('#myModal').modal('hide');
 
-                        $('#cont').load(window.location.href + ' #cont');
+                        // $('#cont').load(window.location.href + ' #cont');
+
+                        window.location.reload(true);
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);
 
@@ -727,7 +729,7 @@ include "value.php";
                     } else if (res.status == 200) {
                         // console.log(2);
                         $('#errorMessage4').addClass('d-none');
-                        $('#expmod')[0].reset(); 
+                        $('#expmod')[0].reset();
                         $('#expModal').modal('hide');
                         $('#expe').load(window.location.href + ' #expe');
                         alertify.set('notifier', 'position', 'top-right');
@@ -737,7 +739,7 @@ include "value.php";
                     } else if (res.status == 500) {
                         // console.log(3);
                         $('#errorMessag4').addClass('d-none');
-                        $('#expmod')[0].reset(); 
+                        $('#expmod')[0].reset();
                         $('#expe').load(window.location.href + ' #expe');
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);
