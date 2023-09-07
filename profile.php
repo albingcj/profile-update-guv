@@ -566,7 +566,7 @@ include "value.php";
             var formData = new FormData(this);
             formData.append("save_up", true);
 
-            formData.append("pic2", $("#formFile")[0].files[0]); // Use correct ID
+            formData.append("pic2", $("#formFile")[0].files[0]);
 
             $.ajax({
                 type: "POST",
@@ -586,7 +586,7 @@ include "value.php";
                     } else if (res.status == 200) {
                         console.log(2);
                         $('#errorMessage').addClass('d-none');
-                        $('#upd')[0].reset(); //change here
+                        $('#upd')[0].reset();
                         $('#myModal').modal('hide');
 
                         $('#cont').load(window.location.href + ' #cont');
@@ -597,7 +597,7 @@ include "value.php";
                     } else if (res.status == 500) {
                         console.log(3);
                         $('#errorMessage').addClass('d-none');
-                        $('#upd')[0].reset(); //change here 
+                        $('#upd')[0].reset();
                         $('#cont').load(window.location.href + ' #cont');
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);
@@ -614,7 +614,7 @@ include "value.php";
             var formData = new FormData(this);
             formData.append("save_sum", true);
 
-            // formData.append("pic", $("#formFile")[0].files[0]); // Use correct ID
+            // formData.append("pic", $("#formFile")[0].files[0]);
 
             $.ajax({
                 type: "POST",
@@ -635,7 +635,7 @@ include "value.php";
                         // console.log(2);
                         $('#errorMessage').addClass('d-none');
                         $('#summary').html(res.message);
-                        $('#summod')[0].reset(); //change here
+                        $('#summod')[0].reset();
                         $('#sumModal').modal('hide');
 
                         $('#summary').load(window.location.href + ' #summary');
@@ -646,7 +646,7 @@ include "value.php";
                     } else if (res.status == 500) {
                         console.log(3);
                         $('#errorMessage').addClass('d-none');
-                        $('#summod')[0].reset(); //change here 
+                        $('#summod')[0].reset();
                         $('#summary').load(window.location.href + ' #summary');
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);
@@ -662,7 +662,7 @@ include "value.php";
             var formData = new FormData(this);
             formData.append("save_edu", true);
 
-            // formData.append("pic", $("#formFile")[0].files[0]); // Use correct ID
+            // formData.append("pic", $("#formFile")[0].files[0]);
 
             $.ajax({
                 type: "POST",
@@ -682,7 +682,7 @@ include "value.php";
                     } else if (res.status == 200) {
                         // console.log(2);
                         $('#errorMessage3').addClass('d-none');
-                        $('#edumod')[0].reset(); //change here
+                        $('#edumod')[0].reset();
                         $('#eduModal').modal('hide');
                         $('#educat').load(window.location.href + ' #educat');
                         alertify.set('notifier', 'position', 'top-right');
@@ -692,7 +692,7 @@ include "value.php";
                     } else if (res.status == 500) {
                         // console.log(3);
                         $('#errorMessag3').addClass('d-none');
-                        $('#edumod')[0].reset(); //change here 
+                        $('#edumod')[0].reset();
                         $('#educat').load(window.location.href + ' #educat');
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);
@@ -707,7 +707,7 @@ include "value.php";
             var formData = new FormData(this);
             formData.append("save_exp", true);
 
-            // formData.append("pic", $("#formFile")[0].files[0]); // Use correct ID
+            // formData.append("pic", $("#formFile")[0].files[0]);
 
             $.ajax({
                 type: "POST",
@@ -727,7 +727,7 @@ include "value.php";
                     } else if (res.status == 200) {
                         // console.log(2);
                         $('#errorMessage4').addClass('d-none');
-                        $('#expmod')[0].reset(); //change here
+                        $('#expmod')[0].reset(); 
                         $('#expModal').modal('hide');
                         $('#expe').load(window.location.href + ' #expe');
                         alertify.set('notifier', 'position', 'top-right');
@@ -737,7 +737,7 @@ include "value.php";
                     } else if (res.status == 500) {
                         // console.log(3);
                         $('#errorMessag4').addClass('d-none');
-                        $('#expmod')[0].reset(); //change here 
+                        $('#expmod')[0].reset(); 
                         $('#expe').load(window.location.href + ' #expe');
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.success(res.message);

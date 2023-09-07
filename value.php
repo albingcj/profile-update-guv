@@ -51,13 +51,10 @@ $desc = $val['descx'];
 
 
 
-// Create a DateTime object from the date of birth
+// age
 $birthDate = new DateTime($dob);
-// Get the current date
 $currentDate = new DateTime();
-// Calculate the difference between the current date and the date of birth
 $interval = $birthDate->diff($currentDate);
-// Get the years from the interval
 $age = $interval->y;
 
 

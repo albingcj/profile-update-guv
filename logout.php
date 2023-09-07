@@ -16,7 +16,7 @@ if (ini_get("session.use_cookies")) {
 // Destroy the session
 session_destroy();
 
-// Redirect to the signup.php page
+// Redirect to the signup.php
 header("Location: index.php");
 exit;
 ?>

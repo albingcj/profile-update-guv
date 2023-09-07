@@ -11,7 +11,7 @@ if (isset($_POST['save_reg'])) {
     $code = $_POST['code'];
     $num = $_POST['num'];
     $date = $_POST['dob'];
-    
+
     //pic start
     $file_name = $_FILES['pic']['name'];
     $file_tmp = $_FILES['pic']['tmp_name'];
@@ -43,11 +43,9 @@ if (isset($_POST['save_reg'])) {
     mysqli_stmt_bind_param($stmt, "s", $email);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_store_result($stmt);
-    
-    if (mysqli_stmt_num_rows($stmt) === 0) { // Check for existing user
-        // Move the uploaded file to the desired location
+
+    if (mysqli_stmt_num_rows($stmt) === 0) {
         if (move_uploaded_file($file_tmp, $filePath)) {
-            // File was successfully moved, proceed with inserting the user details into the database
             $query = "INSERT INTO reg (name, email, pwrd, gender, code, num, dob, pic) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -61,7 +59,7 @@ if (isset($_POST['save_reg'])) {
                     'message' => 'Details Updated Successfully'
                 ];
 
-                // JSON file update
+                // JSON
                 $jsonFilePath = 'data.json';
 
                 //array added to the JSON file
@@ -69,10 +67,10 @@ if (isset($_POST['save_reg'])) {
                     'name' => $name,
                     'email' => $email,
                     'password' => $pass1,
-                    'dob' => $date, 
-                    'code' => $code, 
-                    'phone_number' => $num, 
-                    'gender' => $gender, 
+                    'dob' => $date,
+                    'code' => $code,
+                    'phone_number' => $num,
+                    'gender' => $gender,
                     'secondary_mail' => 0,
                     'language' => 0,
                     'address1' => 0,
@@ -83,7 +81,6 @@ if (isset($_POST['save_reg'])) {
                     'nation' => 0,
                 ];
 
-                // Read existing JSON data
                 $jsonString = file_get_contents($jsonFilePath);
                 $jsonData = json_decode($jsonString, true);
 
@@ -91,13 +88,11 @@ if (isset($_POST['save_reg'])) {
                     $jsonData = [];
                 }
 
-                // Add new user data to the existing JSON data
                 $jsonData[] = $newUserData;
 
-                // Encode the updated data and write it back to the JSON file
                 $updatedJsonString = json_encode($jsonData, JSON_PRETTY_PRINT);
                 if (file_put_contents($jsonFilePath, $updatedJsonString)) {
-                    // JSON file updated successfully
+
                     echo json_encode($res);
                     return;
                 } else {
@@ -116,6 +111,8 @@ if (isset($_POST['save_reg'])) {
                 echo json_encode($res);
                 return;
             }
+            //end JSON
+
         } else {
             $res = [
                 'status' => 500,
@@ -133,7 +130,5 @@ if (isset($_POST['save_reg'])) {
         return;
     }
 
-    // Close the prepared statement
     mysqli_stmt_close($stmt);
 }
-?>

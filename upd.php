@@ -66,27 +66,25 @@ if ($_SESSION['loggedin']) {
             $file_name = $_FILES['pic2']['name'];
             $file_tmp = $_FILES['pic2']['tmp_name'];
 
-            // Get the file extension
             $ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
 
-            // Allowed image extensions
             $allowed_extensions = array('jpg', 'jpeg', 'png', 'gif');
 
             if (in_array($ext, $allowed_extensions)) {
-                // Generate a unique file name
                 $file_name = $name . $num . "." . $ext;
 
                 $filePath = "images/profile/" . $file_name;
                 $updateFields[] = "pic='" . $filePath . "'";
 
-                // Move the uploaded file to the destination directory
                 if (move_uploaded_file($file_tmp, $filePath)) {
                     // File moved successfully
+                    // echo '<script>console.log(1)</script>';
                 } else {
                     // Failed to move the file
+                    // echo '<script>console.log(1)</script>';
+
                 }
             } else {
-                // Invalid file extension
                 $res = [
                     'status' => 422,
                     'message' => 'Invalid file extension'
@@ -124,10 +122,6 @@ if ($_SESSION['loggedin']) {
             $updateFields2['nation'] = $_POST['nation'];
         }
 
-
-        // ... your previous code ...
-
-
         $usercnfrm = $_SESSION['log'];
         $updateFieldsStr = implode(', ', $updateFields);
 
@@ -135,12 +129,10 @@ if ($_SESSION['loggedin']) {
         $result = mysqli_query($db, $query);
 
         if ($result) {
-            // Read existing JSON data
             $jsonFilePath = 'data.json';
             $jsonData = json_decode(file_get_contents($jsonFilePath), true);
 
             if (is_array($jsonData)) {
-                // Find and update the user's data in the JSON array
                 foreach ($jsonData as &$user) {
                     if ($user['email'] === $usercnfrm) {
                         foreach ($updateFields2 as $key => $value) {
@@ -149,8 +141,6 @@ if ($_SESSION['loggedin']) {
                         break;
                     }
                 }
-
-                // Encode the updated data and write it back to the JSON file
                 $updatedJsonString = json_encode($jsonData, JSON_PRETTY_PRINT);
                 if (file_put_contents($jsonFilePath, $updatedJsonString)) {
                     // JSON file updated successfully
@@ -161,7 +151,7 @@ if ($_SESSION['loggedin']) {
                     echo json_encode($res);
                     return;
                 } else {
-                    // Failed to update JSON file
+                    // Failed to update JSON
                     $res = [
                         'status' => 500,
                         'message' => 'Failed to update JSON file'
@@ -170,7 +160,7 @@ if ($_SESSION['loggedin']) {
                     return;
                 }
             } else {
-                // JSON data is not an array
+                // JSON data miss
                 $res = [
                     'status' => 500,
                     'message' => 'Invalid JSON data'
@@ -179,7 +169,7 @@ if ($_SESSION['loggedin']) {
                 return;
             }
         } else {
-            // Database update failed
+            // DBupdate failed
             $res = [
                 'status' => 500,
                 'message' => 'Database update failed'
@@ -187,9 +177,6 @@ if ($_SESSION['loggedin']) {
             echo json_encode($res);
             return;
         }
-
-
-        // ... rest of your code ...
 
     }
 
@@ -277,7 +264,7 @@ if ($_SESSION['loggedin']) {
             $month2 = mysqli_real_escape_string($db, $_POST['month2']);
             $desc = mysqli_real_escape_string($db, $_POST['desc']);
 
-            // SQL query to update the data
+            // SQL query to update
             $query = "UPDATE reg
         SET comp = '$comp', rolex = '$role', s1 = '$s1', e1 = '$e1', month1 = '$month1', month2 = '$month2', descx = '$desc' 
         WHERE email='$usercnfrm'";

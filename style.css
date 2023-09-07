@@ -17,5 +17,5 @@ input[type="file"] {
     line-height: 2.15;
 }
 .btn:hover #im {
-    animation: zoomInOut 1s infinite; /* Play animation on hover */
+    animation: zoomInOut 1s infinite;
 }

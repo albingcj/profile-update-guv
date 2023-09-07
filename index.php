@@ -202,8 +202,7 @@ if (isset($_COOKIE['email_id']) && isset($_COOKIE['password'])) {
                 var formData = new FormData(this);
                 formData.append("save_reg", true);
 
-                formData.append("pic", $("#exampleFormControlInputx")[0].files[0]); //gpt
-
+                formData.append("pic", $("#exampleFormControlInputx")[0].files[0]); 
                 console.log(formData);
                 $.ajax({
                     type: "POST",
@@ -224,7 +223,7 @@ if (isset($_COOKIE['email_id']) && isset($_COOKIE['password'])) {
                         } else if (res.status == 200) {
                             // console.log(2);
                             $('#errorMessage2').addClass('d-none');
-                            $('#reg')[0].reset(); //change here
+                            $('#reg')[0].reset(); 
                             // $('#myModal').hide();
                             $('#myModal').modal('hide');
 
@@ -236,7 +235,7 @@ if (isset($_COOKIE['email_id']) && isset($_COOKIE['password'])) {
                         } else if (res.status == 500) {
                             // console.log(3);
                             $('#errorMessage2').addClass('d-none');
-                            $('#reg')[0].reset(); //change here 
+                            $('#reg')[0].reset();
                             alertify.set('notifier', 'position', 'top-right');
                             alertify.success(res.message);
                         }
@@ -271,7 +270,7 @@ if (isset($_COOKIE['email_id']) && isset($_COOKIE['password'])) {
                         } else if (res.status == 200) {
                             // console.log(2);
                             $('#errorMessage1').addClass('d-none');
-                            $('#reg')[0].reset(); //change here
+                            $('#reg')[0].reset();
                             $('#myModal').modal('hide');
 
                             alertify.set('notifier', 'position', 'top-right');
@@ -282,7 +281,7 @@ if (isset($_COOKIE['email_id']) && isset($_COOKIE['password'])) {
                         } else if (res.status == 500) {
                             // console.log(3);
                             $('#errorMessage1').addClass('d-none');
-                            $('#reg')[0].reset(); //change here 
+                            $('#reg')[0].reset(); 
                             alertify.set('notifier', 'position', 'top-right');
                             alertify.success(res.message);
                         }
